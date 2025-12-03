@@ -1,5 +1,3 @@
-// HoverableBackground.qml
-
 import QtQuick
 
 Rectangle {
