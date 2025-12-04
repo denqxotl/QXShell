@@ -1,31 +1,33 @@
-import Quickshell.Io
 import QtQuick
-import "../../../components"
+import Quickshell.Io
+import "../../components"
 
 Item {
-  id: lockButton
+  id: powerOff
   implicitHeight: hoverBackground.implicitHeight
   implicitWidth: hoverBackground.implicitWidth
+  property var powerMenuPopup
 
   anchors.verticalCenter: parent.verticalCenter
 
   property var process: Process {
-    command: ["sh", "-c", "hyprctl dispatch exec hyprlock"]
+    // systemctl poweroff
+    command: ["sh", "-c", "systemctl reboot"]
   }
 
   HoverableBackground {
     id: hoverBackground
     anchors.centerIn: parent
     onClick: () => {
-      lockButton.process.startDetached()
+      powerMenuPopup.visible = false
+      process.startDetached()
     }
-
     content: Component {
       Row {
         anchors.centerIn: parent
         spacing: 4
         Image {
-          source: "../../../static/lock.svg"
+          source: "../../static/restart.svg"
           width: 30
           height: 30
           fillMode: Image.PreserveAspectFit

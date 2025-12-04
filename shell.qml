@@ -2,7 +2,7 @@
 import Quickshell
 import QtQuick
 import "bar"
-import "bar/popups"
+import "popups"
 
 ShellRoot {
   Variants {

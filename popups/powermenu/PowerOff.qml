@@ -1,6 +1,6 @@
 import QtQuick
 import Quickshell.Io
-import "../../../components"
+import "../../components"
 
 Item {
   id: powerOff
@@ -27,7 +27,7 @@ Item {
         anchors.centerIn: parent
         spacing: 4
         Image {
-          source: "../../../static/poweroff.svg"
+          source: "../../static/poweroff.svg"
           width: 30
           height: 30
           fillMode: Image.PreserveAspectFit
