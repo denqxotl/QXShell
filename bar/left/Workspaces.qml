@@ -1,6 +1,6 @@
 import Quickshell.Hyprland
 import QtQuick
-import "../../widgets"
+import "../../components"
 
 Item {
   id: clockRoot

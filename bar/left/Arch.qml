@@ -1,5 +1,5 @@
 import QtQuick
-import "../../widgets"
+import "../../components"
 import "../popups"
 
 Item {

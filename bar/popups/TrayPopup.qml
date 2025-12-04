@@ -1,7 +1,7 @@
 import Quickshell
 import Quickshell.Services.SystemTray
 import QtQuick
-import "../../widgets"
+import "../../components"
 
 Popup {
   id: trayPopup

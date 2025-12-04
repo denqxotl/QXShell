@@ -1,6 +1,6 @@
 import QtQuick
 import Quickshell.Io
-import "../../widgets"
+import "../../components"
 
 Item {
   id: volumeRoot

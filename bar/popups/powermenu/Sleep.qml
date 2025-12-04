@@ -1,6 +1,6 @@
 import Quickshell.Io
 import QtQuick
-import "../../../widgets"
+import "../../../components"
 
 Item {
   id: sleepButton
