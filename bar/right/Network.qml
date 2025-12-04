@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell.Io
+import qs
 import qs.components
 
 Item {
@@ -48,7 +49,7 @@ Item {
         anchors.centerIn: parent
         spacing: 4
         Image {
-          source: networkRoot.networkConnected ? "../../static/network.svg" : "../../static/wifi-dis.svg"
+          source: networkRoot.networkConnected ? Static.getStaticFile("network.svg") : Static.getStaticFile("wifi-dis.svg")
           width: 20
           height: 20
           fillMode: Image.PreserveAspectFit

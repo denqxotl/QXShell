@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell.Io
+import qs
 import qs.components
 
 Item {
@@ -11,7 +12,6 @@ Item {
   anchors.verticalCenter: parent.verticalCenter
 
   property var process: Process {
-    // systemctl poweroff
     command: ["sh", "-c", "systemctl reboot"]
   }
 
@@ -27,7 +27,7 @@ Item {
         anchors.centerIn: parent
         spacing: 4
         Image {
-          source: "../../static/restart.svg"
+          source: Static.getStaticFile("restart.svg")
           width: 30
           height: 30
           fillMode: Image.PreserveAspectFit

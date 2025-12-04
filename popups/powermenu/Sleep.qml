@@ -1,6 +1,9 @@
+import Quickshell
 import Quickshell.Io
 import QtQuick
+import qs
 import qs.components
+
 
 Item {
   id: sleepButton
@@ -26,7 +29,7 @@ Item {
         anchors.centerIn: parent
         spacing: 4
         Image {
-          source: "../../static/sleep.svg"
+          source: Static.getStaticFile("sleep.svg")
           width: 30
           height: 30
           sourceSize: Qt.size(30, 30)

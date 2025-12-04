@@ -1,4 +1,5 @@
 import QtQuick
+import qs
 import qs.components
 
 Item {
@@ -16,7 +17,7 @@ Item {
         anchors.centerIn: parent
         spacing: 4
         Image {
-          source: "../../static/system_monitor.svg"
+          source: Static.getStaticFile("system_monitor.svg")
           width: 20
           height: 20
           fillMode: Image.PreserveAspectFit

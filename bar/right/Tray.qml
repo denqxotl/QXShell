@@ -1,4 +1,5 @@
 import QtQuick
+import qs
 import qs.components
 
 Item {
@@ -20,7 +21,7 @@ Item {
         anchors.centerIn: parent
         spacing: 4
         Image {
-          source: "../../static/arrow_down.svg"
+          source: Static.getStaticFile("arrow_down.svg")
           width: 20
           height: 20
           fillMode: Image.PreserveAspectFit

@@ -1,5 +1,6 @@
 import Quickshell
 import QtQuick
+import qs
 
 PopupWindow {
   id: popup
@@ -15,9 +16,20 @@ PopupWindow {
   implicitWidth: popupRect.implicitWidth
   implicitHeight: visible ? popupRect.implicitHeight : 1
 
+  Connections {
+    target: PopupManager
+    function onTogglePopup() {
+      popup.visible ? !popup.visible : popup.visible
+    }
+    function onClosePopup() {
+      popup.visible = false
+    }
+  }
+
   function toggle(position, x, y) {
+    PopupManager.togglePopup()
     popup.x = getPositionX(position, x)
-    popup.y = bar.height - 3
+    popup.y = bar.height + 20
     popup.visible = !popup.visible
   }
 
@@ -35,8 +47,7 @@ PopupWindow {
     anchors.right: popup.position === 'right' ? parent.right : undefined
     anchors.left: popup.position === 'left' ? parent.left : undefined
     color: "#282A36"
-    bottomLeftRadius: 12
-    bottomRightRadius: 12
+    radius: 12
     implicitWidth: content.implicitWidth + 24
     implicitHeight: content.implicitHeight + 24
     Loader {

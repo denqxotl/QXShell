@@ -23,7 +23,16 @@ PanelWindow {
   }
 
   Connections {
+    id: popupManagerConnections
     target: PopupManager
+    function onTogglePopup() {
+      background.visible = !background.visible
+    }
+
+    function onClosePopup() {
+      console.log("Closing backdrop")
+      background.visible = false
+    }
   }
 
   MouseArea {
@@ -31,7 +40,8 @@ PanelWindow {
     anchors.fill: parent
     hoverEnabled: true
     onClicked: {
-        background.visible = false
+      background.visible = false
+      PopupManager.closePopup()
     }
   }
 }
