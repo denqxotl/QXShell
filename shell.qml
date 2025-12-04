@@ -16,8 +16,26 @@ ShellRoot {
       }
 
       Bar {
-        id: barInstance
+        id: bar
         vscreen: modelData
+      }
+      PowerMenu {
+        id: powerMenuPopup
+        anchor.window: bar
+      }
+
+      TrayPopup {
+        id: trayPopup
+        anchor.window: bar
+      }
+      LayoutPopup {
+        id: layoutPopup
+        anchor.window: bar
+      }
+
+      VolumePopup {
+        id: volumePopup
+        anchor.window: bar
       }
     }
   }

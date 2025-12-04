@@ -6,7 +6,7 @@ Rectangle {
 	property alias content: contentLoader.sourceComponent
 	property color baseColor: "transparent"
 	property color hoverColor: "#BD93F9"
-	property int baseRadius: 0
+	property int baseRadius: 2
 	property int hoverRadius: 12
 	property var forcedColor: null
 	property var forcedRadius: null

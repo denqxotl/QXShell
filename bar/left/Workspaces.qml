@@ -17,7 +17,7 @@ Item {
       delegate: HoverableBackground {
         forcedColor: (modelData.active && Hyprland.focusedMonitor != null && modelData.monitor.name === Hyprland.focusedMonitor.name) ? "#6272a4" : null
         forcedRadius: modelData.active ? 12 : null
-        visible: !modelData.monitor || (barRoot.vscreen && modelData.monitor.name === barRoot.vscreen.name)
+        visible: !modelData.monitor || (bar.vscreen && modelData.monitor.name === bar.vscreen.name)
         onClick: () => {
           if (modelData.active) return;
           Hyprland.dispatch("workspace " + modelData.id)

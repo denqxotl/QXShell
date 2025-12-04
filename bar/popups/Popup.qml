@@ -17,7 +17,7 @@ PopupWindow {
 
   function toggle(position, x, y) {
     popup.x = getPositionX(position, x)
-    popup.y = barItem.height - 3
+    popup.y = bar.height - 3
     popup.visible = !popup.visible
   }
 
