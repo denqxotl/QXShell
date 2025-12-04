@@ -1,6 +1,6 @@
 import Quickshell.Io
 import QtQuick
-import "../../components"
+import qs.components
 
 Item {
   id: keyboardLayout
@@ -55,7 +55,7 @@ Item {
     }
   }
 
-  HoverableBackground {
+  QXButton {
     id: hoverBackground
     onClick: () => {
       var point = keyboardLayout.mapToItem(null, 0, 0);

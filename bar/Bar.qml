@@ -1,8 +1,8 @@
 import Quickshell
 import QtQuick
-import "left"
-import "right"
-import "popups"
+import qs.bar.left
+import qs.bar.right
+import qs.popups
 
 PanelWindow {
   property var vscreen

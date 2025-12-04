@@ -1,6 +1,6 @@
 import Quickshell.Io
 import QtQuick
-import "../../components"
+import qs.components
 
 Item {
   id: lockButton
@@ -13,7 +13,7 @@ Item {
     command: ["sh", "-c", "hyprctl dispatch exec hyprlock"]
   }
 
-  HoverableBackground {
+  QXButton {
     id: hoverBackground
     anchors.centerIn: parent
     onClick: () => {

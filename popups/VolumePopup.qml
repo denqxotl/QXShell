@@ -2,7 +2,7 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Hyprland
 import QtQuick
-import "../../components"
+import qs.components
 
 Popup {
   id: volumePopup

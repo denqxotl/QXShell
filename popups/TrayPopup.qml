@@ -1,7 +1,7 @@
 import Quickshell
 import Quickshell.Services.SystemTray
 import QtQuick
-import "../components"
+import qs.components
 
 Popup {
   id: trayPopup
@@ -11,7 +11,7 @@ Popup {
       spacing: 0
       Repeater {
         model: SystemTray.items
-        delegate: HoverableBackground {
+        delegate: QXButton {
           content: Component {
             Image {
               source: modelData.icon

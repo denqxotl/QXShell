@@ -1,6 +1,6 @@
 import Quickshell.Io
 import QtQuick
-import "../../components"
+import qs.components
 
 Item {
   id: sleepButton
@@ -14,7 +14,7 @@ Item {
     command: ["sh", "-c", "systemctl suspend"]
   }
 
-  HoverableBackground {
+  QXButton {
     id: hoverBackground
     anchors.centerIn: parent
     onClick: () => {

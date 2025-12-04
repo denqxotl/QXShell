@@ -1,6 +1,6 @@
 import QtQuick
-import "../../components"
-import "../popups"
+import qs.components
+import qs.popups
 
 Item {
   id: archLogo
@@ -12,7 +12,7 @@ Item {
 
   anchors.verticalCenter: parent.verticalCenter
 
-  HoverableBackground {
+  QXButton {
     id: hoverBackground
     anchors.centerIn: parent
     onClick: () =>{

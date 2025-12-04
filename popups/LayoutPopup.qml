@@ -2,7 +2,7 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Hyprland
 import QtQuick
-import "../components"
+import qs.components
 
 Popup {
   id: layoutPopup
@@ -29,7 +29,7 @@ Popup {
       spacing: 12
       Repeater {
         model: layoutPopup.layouts
-        delegate: HoverableBackground {
+        delegate: QXButton {
           onClick: () => {
             changeLayoutProcess.exec(["sh", "-c", "hyprctl switchxkblayout keychron--keychron-link--keyboard " + index]);
             layoutPopup.visible = false;

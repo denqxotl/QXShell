@@ -1,6 +1,6 @@
 import Quickshell.Hyprland
 import QtQuick
-import "../../components"
+import qs.components
 
 Item {
   id: clockRoot
@@ -14,7 +14,7 @@ Item {
     spacing: 6
     Repeater {
       model: Hyprland.workspaces
-      delegate: HoverableBackground {
+      delegate: QXButton {
         forcedColor: (modelData.active && Hyprland.focusedMonitor != null && modelData.monitor.name === Hyprland.focusedMonitor.name) ? "#6272a4" : null
         forcedRadius: modelData.active ? 12 : null
         visible: !modelData.monitor || (bar.vscreen && modelData.monitor.name === bar.vscreen.name)

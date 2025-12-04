@@ -1,6 +1,6 @@
 import Quickshell
 import QtQuick
-import "powermenu"
+import qs.popups.powermenu
 
 Popup {
   content: Component {

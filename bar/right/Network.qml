@@ -1,6 +1,6 @@
 import QtQuick
 import Quickshell.Io
-import "../../components"
+import qs.components
 
 Item {
   id: networkRoot
@@ -40,7 +40,7 @@ Item {
     }
   }
 
-  HoverableBackground {
+  QXButton {
     id: hoverBackground
     anchors.centerIn: parent
     content: Component {

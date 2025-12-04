@@ -1,6 +1,6 @@
 import QtQuick
 import Quickshell.Io
-import "../../components"
+import qs.components
 
 Item {
   id: volumeRoot
@@ -34,7 +34,7 @@ Item {
   }
 
 
-  HoverableBackground {
+  QXButton {
     id: hoverBackground
     onClick: () => {
       var point = volumeRoot.mapToItem(null, 0, 0);

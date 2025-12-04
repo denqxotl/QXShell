@@ -1,8 +1,8 @@
 //@ pragma UseQApplication
 import Quickshell
 import QtQuick
-import "bar"
-import "popups"
+import qs.bar
+import qs.popups
 
 ShellRoot {
   Variants {
@@ -19,6 +19,7 @@ ShellRoot {
         id: bar
         vscreen: modelData
       }
+
       PowerMenu {
         id: powerMenuPopup
         anchor.window: bar
@@ -28,6 +29,7 @@ ShellRoot {
         id: trayPopup
         anchor.window: bar
       }
+
       LayoutPopup {
         id: layoutPopup
         anchor.window: bar

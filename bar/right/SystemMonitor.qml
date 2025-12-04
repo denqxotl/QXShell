@@ -1,5 +1,5 @@
 import QtQuick
-import "../../components"
+import qs.components
 
 Item {
   id: clockRoot
@@ -8,7 +8,7 @@ Item {
 
   anchors.verticalCenter: parent.verticalCenter
 
-  HoverableBackground {
+  QXButton {
     id: hoverBackground
     anchors.centerIn: parent
     content: Component {

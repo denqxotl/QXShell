@@ -1,7 +1,6 @@
 import QtQuick
 import Quickshell.Io
-import "../../components"
-
+import qs.components
 Item {
   id: clockRoot
   implicitHeight: hoverBackground.implicitHeight
@@ -32,7 +31,7 @@ Item {
   }
 
 
-  HoverableBackground {
+  QXButton {
     id: hoverBackground
     onClick: () => {
       notificationCenter.startDetached()

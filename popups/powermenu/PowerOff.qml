@@ -1,6 +1,6 @@
 import QtQuick
 import Quickshell.Io
-import "../../components"
+import qs.components
 
 Item {
   id: powerOff
@@ -15,7 +15,7 @@ Item {
     command: ["sh", "-c", "systemctl poweroff"]
   }
 
-  HoverableBackground {
+  QXButton {
     id: hoverBackground
     anchors.centerIn: parent
     onClick: () => {
