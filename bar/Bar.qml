@@ -18,8 +18,14 @@ PanelWindow {
 
   Rectangle {
     anchors.fill: parent
+    implicitHeight: 50
     radius: 12
     color: "#282A36"
+    opacity: 0.9
+    anchors {
+      margins: 8
+      bottomMargin: 0
+    }
     Left {
       anchors {
         left: parent.left

@@ -3,33 +3,31 @@ pragma Singleton
 import Quickshell
 import QtQuick
 
-// TODO: implement an ability to manage multiple popups globally
 Singleton {
   id: popupManager
-
   property var popupsList: []
   signal togglePopup()
   signal closePopup()
   signal backDropVisibleChanged(bool visible)
 
   function popUpClicked(popup) {
-    if( popupsList.indexOf(popup) === -1 ) {
-      popupsList.push(popup)
-      popup.visible = true
+    const index = popupsList.indexOf(popup);
+    const isOpen = index !== -1;
+
+    if (isOpen) {
+      popupsList.splice(index, 1);
     } else {
-      var index = popupsList.indexOf(popup)
-      popupsList.splice(index, 1)
-      popup.visible = false
+      popupsList.push(popup);
     }
-    popupManager.togglePopup()
-    popupManager.backDropVisibleChanged(popupsList.length > 0)
+
+    popup.visible = !isOpen;
+    popupManager.togglePopup();
+    popupManager.backDropVisibleChanged(popupsList.length > 0);
   }
 
   function closeAll() {
-    for( var i = 0; i < popupsList.length; i++ ) {
-      popupsList[i].visible = false
-    }
-    popupsList = []
-    popupManager.backDropVisibleChanged(false)
+    popupsList.forEach(popup => popup.visible = false);
+    popupsList.length = 0;
+    popupManager.backDropVisibleChanged(false);
   }
 }

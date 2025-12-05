@@ -11,7 +11,7 @@ Item {
 
   Row {
     id: workspacesRow
-    spacing: 6
+    spacing: 4
     Repeater {
       model: Hyprland.workspaces
       delegate: QXButton {
