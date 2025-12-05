@@ -31,6 +31,7 @@ Popup {
         model: layoutPopup.layouts
         delegate: QXButton {
           onClick: () => {
+            // TODO: replace hardcoded keyboard
             changeLayoutProcess.exec(["sh", "-c", "hyprctl switchxkblayout keychron--keychron-link--keyboard " + index]);
             layoutPopup.visible = false;
           }

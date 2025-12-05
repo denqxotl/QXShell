@@ -25,13 +25,12 @@ PanelWindow {
   Connections {
     id: popupManagerConnections
     target: PopupManager
-    function onTogglePopup() {
-      background.visible = !background.visible
+    function onBackDropVisibleChanged(visible) {
+      background.visible = visible
     }
 
     function onClosePopup() {
-      console.log("Closing backdrop")
-      background.visible = false
+      PopupManager.closeAll();
     }
   }
 

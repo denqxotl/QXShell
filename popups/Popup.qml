@@ -16,21 +16,10 @@ PopupWindow {
   implicitWidth: popupRect.implicitWidth
   implicitHeight: visible ? popupRect.implicitHeight : 1
 
-  Connections {
-    target: PopupManager
-    function onTogglePopup() {
-      popup.visible ? !popup.visible : popup.visible
-    }
-    function onClosePopup() {
-      popup.visible = false
-    }
-  }
-
   function toggle(position, x, y) {
-    PopupManager.togglePopup()
+    PopupManager.popUpClicked(popup)
     popup.x = getPositionX(position, x)
     popup.y = bar.height + 20
-    popup.visible = !popup.visible
   }
 
   function getPositionX(position, x) {
@@ -46,6 +35,7 @@ PopupWindow {
     id: popupRect
     anchors.right: popup.position === 'right' ? parent.right : undefined
     anchors.left: popup.position === 'left' ? parent.left : undefined
+    opacity: 0.8
     color: "#282A36"
     radius: 12
     implicitWidth: content.implicitWidth + 24
