@@ -36,7 +36,7 @@ PopupWindow {
     id: popupRect
     anchors.right: popup.position === 'right' ? parent.right : undefined
     anchors.left: popup.position === 'left' ? parent.left : undefined
-    opacity: 0.8
+    opacity: 0.9
     color: Theme.background
     radius: 12
     implicitWidth: content.implicitWidth + 24
