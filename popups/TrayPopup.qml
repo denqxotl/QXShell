@@ -23,7 +23,7 @@ Popup {
           }
           onClick: () => {
             modelData.activate();
-            trayPopup.visible = false;
+            PopupManager.close(trayPopup);
           }
           onRightClick: () => {
             menuAnchorComponent.createObject(menuAnchorComponent).open();

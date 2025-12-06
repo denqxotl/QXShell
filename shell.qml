@@ -4,6 +4,7 @@ import Quickshell
 import QtQuick
 import qs.bar
 import qs.popups
+import qs.wallpaper
 
 ShellRoot {
   Variants {
@@ -12,6 +13,10 @@ ShellRoot {
 
     Item {
       property var modelData
+
+      Wallpaper {
+        vscreen: modelData
+      }
       Backdrop {
         vscreen: modelData
       }
