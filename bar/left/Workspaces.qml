@@ -1,6 +1,7 @@
 import Quickshell.Hyprland
 import QtQuick
 import qs.components
+import qs.theme
 
 Item {
   id: clockRoot
@@ -15,7 +16,7 @@ Item {
     Repeater {
       model: Hyprland.workspaces
       delegate: QXButton {
-        forcedColor: (modelData.active && Hyprland.focusedMonitor != null && modelData.monitor.name === Hyprland.focusedMonitor.name) ? "#6272a4" : null
+        forcedColor: (modelData.active && Hyprland.focusedMonitor != null && modelData.monitor.name === Hyprland.focusedMonitor.name) ? Theme.currentLine : null
         forcedRadius: modelData.active ? 12 : null
         visible: !modelData.monitor || (bar.vscreen && modelData.monitor.name === bar.vscreen.name)
         onClick: () => {
@@ -27,7 +28,7 @@ Item {
             id: workspaceText
             text: modelData.name
             font.pixelSize: 14
-            color: "#F8F8F2"
+            color: Theme.foreground
           }
         }
         anchors.verticalCenter: parent.verticalCenter

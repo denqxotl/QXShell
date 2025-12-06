@@ -1,11 +1,12 @@
 import QtQuick
+import qs.theme
 
 Rectangle {
 	id: backgroundRect
 
 	property alias content: contentLoader.sourceComponent
-	property color baseColor: "transparent"
-	property color hoverColor: "#BD93F9"
+	property color baseColor: Theme.transparent
+	property color hoverColor: Theme.purple
 	property int baseRadius: 2
 	property int hoverRadius: 12
 	property var forcedColor: null

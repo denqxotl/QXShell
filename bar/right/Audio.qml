@@ -2,6 +2,7 @@ import QtQuick
 import Quickshell.Io
 import qs
 import qs.components
+import qs.theme
 
 Item {
   id: volumeRoot
@@ -57,7 +58,7 @@ Item {
           id: layoutText
           text: outputValue
           font.pixelSize: 11
-          color: "white"
+          color: Theme.foreground
         }
       }
     }

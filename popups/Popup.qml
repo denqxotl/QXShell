@@ -1,11 +1,12 @@
 import Quickshell
 import QtQuick
 import qs
+import qs.theme
 
 PopupWindow {
   id: popup
   visible: false
-  color: "transparent"
+  color: Theme.transparent
   property alias content: content.sourceComponent
   property var x
   property var y
@@ -36,7 +37,7 @@ PopupWindow {
     anchors.right: popup.position === 'right' ? parent.right : undefined
     anchors.left: popup.position === 'left' ? parent.left : undefined
     opacity: 0.8
-    color: "#282A36"
+    color: Theme.background
     radius: 12
     implicitWidth: content.implicitWidth + 24
     implicitHeight: content.implicitHeight + 24

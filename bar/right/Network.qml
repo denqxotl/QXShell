@@ -2,6 +2,7 @@ import QtQuick
 import Quickshell.Io
 import qs
 import qs.components
+import qs.theme
 
 Item {
   id: networkRoot
@@ -59,7 +60,7 @@ Item {
           id: networkPercentage
           text: networkRoot.networkSignalStrengthText
           font.pixelSize: 11
-          color: "white"
+          color: Theme.foreground
         }
       }
     }

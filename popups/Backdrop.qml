@@ -2,6 +2,7 @@
 import Quickshell
 import QtQuick
 import Quickshell.Wayland
+import qs.theme
 
 PanelWindow {
   id: background
@@ -16,10 +17,10 @@ PanelWindow {
     bottom: true
   }
 
-  color: "transparent"
+  color: Theme.transparent
   Rectangle {
     anchors.fill: parent
-    color: "transparent"
+    color: Theme.transparent
   }
 
   Connections {

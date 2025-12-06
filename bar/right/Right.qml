@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import qs.theme
 
 Item {
   id: rightContainerRoot
@@ -13,7 +14,7 @@ Item {
     id: rightContainer
     width: rightRow.width
     height: rightRow.height
-    color: "transparent"
+    color: Theme.transparent
 
     Row {
       id: rightRow

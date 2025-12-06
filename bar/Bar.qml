@@ -3,12 +3,13 @@ import QtQuick
 import qs.bar.left
 import qs.bar.right
 import qs.popups
+import qs.theme
 
 PanelWindow {
   property var vscreen
   id: barItem
   implicitHeight: 50
-  color: "transparent"
+  color: Theme.transparent
   screen: vscreen
   anchors {
     left: true
@@ -20,7 +21,7 @@ PanelWindow {
     anchors.fill: parent
     implicitHeight: 50
     radius: 12
-    color: "#282A36"
+    color: Theme.background
     opacity: 0.9
     anchors {
       margins: 8

@@ -1,6 +1,8 @@
 import QtQuick
 import Quickshell.Io
 import qs.components
+import qs.theme
+
 Item {
   id: clockRoot
   implicitHeight: hoverBackground.implicitHeight
@@ -47,7 +49,7 @@ Item {
           text: currentTime
           font.pixelSize: 15
           font.bold: true
-          color: "#F8F8F2"
+          color: Theme.foreground
         }
         Column {
           spacing: 0
@@ -55,12 +57,12 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             text: currentDate
             font.pixelSize: 10
-            color: "#F8F8F2"
+            color: Theme.foreground
           }
           Text {
             text: currentMonth
             font.pixelSize: 10
-            color: "#F8F8F2"
+            color: Theme.foreground
           }
         }
       }

@@ -3,6 +3,7 @@ import Quickshell.Io
 import Quickshell.Hyprland
 import QtQuick
 import qs.components
+import qs.theme
 
 Popup {
   id: layoutPopup
@@ -40,7 +41,7 @@ Popup {
               text: modelData
               font.pixelSize: 16
               font.bold: true
-              color: "white"
+              color: Theme.foreground
             }
           }
         }

@@ -2,6 +2,7 @@
 import Quickshell
 import QtQuick
 import Quickshell.Wayland
+import qs.theme
 
 PanelWindow {
   id: wallpaper
@@ -13,7 +14,7 @@ PanelWindow {
   implicitHeight: vscreen.height
   implicitWidth: vscreen.width
 
-  color: "transparent"
+  color: Theme.transparent
   Rectangle {
     anchors.fill: parent
     Image {

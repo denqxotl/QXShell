@@ -2,6 +2,7 @@ import Quickshell.Io
 import QtQuick
 import qs
 import qs.components
+import qs.theme
 
 Item {
   id: keyboardLayout
@@ -80,7 +81,7 @@ Item {
           text: keyboardLayout.currentLayout
           font.pixelSize: 14
           font.bold: true
-          color: "white"
+          color: Theme.foreground
         }
       }
     }

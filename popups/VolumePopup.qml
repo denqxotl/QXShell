@@ -5,6 +5,7 @@ import QtQuick
 import QtQuick.Controls
 import qs.components
 import qs.popups
+import qs.theme
 
 Popup {
   id: volumePopup
@@ -21,7 +22,7 @@ Popup {
         Text {
           text: ""
           font.pixelSize: 24
-          color: "#FFFFFF"
+          color: Theme.foreground
           width: 25
         }
         Slider {
@@ -42,7 +43,7 @@ Popup {
           text: "󰍬"
           width: 25
           font.pixelSize: 24
-          color: "#FFFFFF"
+          color: Theme.foreground
         }
         Slider {
           id: microphoneSlider
