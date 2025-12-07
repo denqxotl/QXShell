@@ -3,6 +3,7 @@ import Quickshell.Io
 import qs
 import qs.components
 import qs.theme
+import qs.popups
 
 Item {
   id: networkRoot
@@ -45,6 +46,10 @@ Item {
   QXButton {
     id: hoverBackground
     anchors.centerIn: parent
+    onClick: () => {
+      var point = networkRoot.mapToItem(null, 0, 0);
+      networkPopup.toggle("right", point.x, point.y);
+    }
     content: Component {
       Row {
         anchors.centerIn: parent

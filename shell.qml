@@ -45,6 +45,11 @@ ShellRoot {
         id: volumePopup
         anchor.window: bar
       }
+
+      NetworkPopup {
+        id: networkPopup
+        anchor.window: bar
+      }
     }
   }
 }
