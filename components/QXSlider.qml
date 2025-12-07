@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Controls
 import qs.theme
 
+// TODO: this component isn't ready for use yet
 Slider {
   anchors.verticalCenter: volumeRow.verticalCenter
   property var volumeValue: Math.round((Pipewire.defaultAudioSink?.audio.volume || 0) * 100.0)
