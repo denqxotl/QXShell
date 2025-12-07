@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell.Io
+import Quickshell.Services.Pipewire
 import qs
 import qs.components
 import qs.theme
@@ -11,30 +12,22 @@ Item {
 
   anchors.verticalCenter: parent.verticalCenter
 
-  property var outputValue: "--%"
+  PwObjectTracker {
+    objects: [Pipewire.defaultAudioSink]
+  }
 
-  Process {
-    id: getOutputVolume
-    running: false
-    command: ["sh","-c","pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | tr -d '%'"]
-    stdout: SplitParser {
-      onRead: (data) => {
-        if(data.trim() === "") return;
-        outputValue = data + "%";
-        getOutputVolume.running = false;
-      }
+  Connections {
+    target: Pipewire.defaultAudioSink?.audio
+    function onVolumeChanged() {
+      outputValue = formatVolume(Pipewire.defaultAudioSink?.audio.volume)
     }
   }
 
-  Timer {
-    interval: 100
-    running: true
-    repeat: true
-    onTriggered: {
-      getOutputVolume.running = true;
-    }
+  function formatVolume(value) {
+    return Math.round((value || 0) * 100.0) + "%"
   }
 
+  property var outputValue: formatVolume(Pipewire.defaultAudioSink?.audio.volume)
 
   QXButton {
     id: hoverBackground

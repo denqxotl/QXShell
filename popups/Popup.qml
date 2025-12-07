@@ -20,7 +20,7 @@ PopupWindow {
   function toggle(position, x, y) {
     PopupManager.popUpClicked(popup)
     popup.x = getPositionX(position, x)
-    popup.y = bar.height + 3
+    popup.y = bar.height + 10
   }
 
   function getPositionX(position, x) {

@@ -4,18 +4,19 @@ import Quickshell.Hyprland
 import Quickshell.Services.Pipewire
 import QtQuick
 import QtQuick.Controls
+import qs
 import qs.components
 import qs.popups
 import qs.theme
 
 Popup {
   id: volumePopup
-  implicitHeight: 150
   content: Component {
     Column {
       id: volumeColumn
       anchors.fill: parent
-      spacing: 12
+      // anchors.margins: 12
+      spacing: 20
       PwObjectTracker {
         objects: [Pipewire.defaultAudioSink, Pipewire.defaultAudioSource]
       }
@@ -23,12 +24,12 @@ Popup {
         id: volumeRow
         spacing: 8
         anchors.verticalCenter: volumePopup.verticalCenter
-        Text {
-          anchors.verticalCenter: volumeRow.verticalCenter
-          text: ""
-          font.pixelSize: 24
-          color: Theme.foreground
-          width: 25
+        Image {
+          source: Static.getStaticFile("audio.svg")
+          width: 22
+          height: 22
+          sourceSize: Qt.size(22,22)
+          fillMode: Image.PreserveAspectFit
         }
         Connections {
           target: Pipewire.defaultAudioSink?.audio
@@ -78,12 +79,12 @@ Popup {
             microphoneSlider.value = microphoneSlider.microphoneValue
           }
         }
-        Text {
-          anchors.verticalCenter: microphoneRow.verticalCenter
-          text: "󰍬"
-          width: 25
-          font.pixelSize: 24
-          color: Theme.foreground
+        Image {
+          source: Static.getStaticFile("microphone.svg")
+          width: 20
+          height: 20
+          sourceSize: Qt.size(20,20)
+          fillMode: Image.PreserveAspectFit
         }
         Slider {
           property var microphoneValue: Math.round((Pipewire.defaultAudioSource?.audio.volume || 0) * 100.0)
