@@ -7,7 +7,7 @@ import qs.theme
 Slider {
   anchors.verticalCenter: volumeRow.verticalCenter
   property var volumeValue: Math.round((Pipewire.defaultAudioSink?.audio.volume || 0) * 100.0)
-  id: volumeSlider
+  id: qxslider
   width: 250
   from: 0
   to: 100
@@ -23,13 +23,13 @@ Slider {
     color: Theme.currentLine
     Rectangle {
       radius: 12
-      width: volumeSlider.visualPosition * parent.width
+      width: qxslider.visualPosition * parent.width
       height: parent.height
       color: Theme.purple
     }
   }
   handle: Rectangle {
-    x: volumeSlider.leftPadding + volumeSlider.visualPosition * (volumeSlider.width - volumeSlider.leftPadding - volumeSlider.rightPadding) - width / 2
+    x: qxslider.leftPadding + qxslider.visualPosition * (qxslider.width - qxslider.leftPadding - qxslider.rightPadding) - width / 2
     y: parent.height / 2 - height / 2
   }
 }
