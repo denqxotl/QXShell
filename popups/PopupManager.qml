@@ -17,6 +17,7 @@ Singleton {
     if (isOpen) {
       popupsList.splice(index, 1);
     } else {
+      closeAll();
       popupsList.push(popup);
     }
 

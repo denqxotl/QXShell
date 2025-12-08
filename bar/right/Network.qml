@@ -48,7 +48,7 @@ Item {
     anchors.centerIn: parent
     onClick: () => {
       var point = networkRoot.mapToItem(null, 0, 0);
-      networkPopup.toggle("right", point.x, point.y);
+      networkPopup.toggle("center", point.x, point.y);
     }
     content: Component {
       Row {
