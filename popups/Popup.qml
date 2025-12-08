@@ -36,7 +36,7 @@ PopupWindow {
     id: popupRect
     anchors.right: popup.position === 'right' ? parent.right : undefined
     anchors.left: popup.position === 'left' ? parent.left : undefined
-    opacity: 0.9
+    opacity: 0.95
     color: Theme.background
     radius: 12
     implicitWidth: content.implicitWidth + 24
@@ -52,7 +52,7 @@ PopupWindow {
   Behavior on implicitHeight {
     NumberAnimation {
       duration: 50
-      easing.type: Easing.InExpo
+      easing.type: Easing.InOutQuad
     }
   }
 }

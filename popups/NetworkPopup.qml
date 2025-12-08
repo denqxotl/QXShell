@@ -1,6 +1,7 @@
 import Quickshell
 import Quickshell.Io
 import QtQuick
+import qs
 import qs.theme
 import qs.popups.powermenu
 import qs.components
@@ -38,11 +39,25 @@ Popup {
         id: connectedNetworkButton
         visible: networkManagerPopup.connectedNetwork !== null
         content: Component {
-          Text {
-            width: 250
-            text: networkManagerPopup.connectedNetwork?.ssid || ""
-            color: Theme.foreground
-            font.pixelSize: 14
+          Row {
+            spacing: 8
+            Image {
+              anchors.verticalCenter: parent.verticalCenter
+              source: Static.getStaticFile("network.svg")
+              width: 20
+              height: 20
+            }
+            Text {
+              width: 250
+              text: networkManagerPopup.connectedNetwork?.ssid || ""
+              color: Theme.foreground
+              font.pixelSize: 14
+            }
+            Text {
+              text: networkManagerPopup.connectedNetwork?.signal + "%"
+              color: Theme.foreground
+              font.pixelSize: 10
+            }
           }
         }
       }
@@ -59,11 +74,25 @@ Popup {
         QXButton {
           visible: modelData.ssid !== ""
           content: Component {
-            Text {
-              width: 250
-              text: modelData.ssid
-              color: Theme.foreground
-              font.pixelSize: 14
+            Row {
+              spacing: 8
+              Image {
+                anchors.verticalCenter: parent.verticalCenter
+                source: Static.getStaticFile("network.svg")
+                width: 20
+                height: 20
+              }
+              Text {
+                width: 250
+                text: modelData.ssid
+                color: Theme.foreground
+                font.pixelSize: 14
+              }
+              Text {
+                text: modelData.signal + "%"
+                color: Theme.foreground
+                font.pixelSize: 10
+              }
             }
           }
         }

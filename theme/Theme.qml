@@ -16,4 +16,6 @@ Singleton {
   property string cyan: "#8BE9FD"
   property string purple: "#BD93F9"
   property string pink: "#FF79C6"
+
+  property int radius: 12
 }
