@@ -25,11 +25,18 @@ PanelWindow {
     MouseArea {
       anchors.fill: parent
       acceptedButtons: Qt.LeftButton | Qt.RightButton
-      onClicked: (mouse) => {
-        if (mouse.button === Qt.RightButton) {
-        } else if (mouse.button === Qt.LeftButton) {
-        }
-      }
+      onClicked: handleMouseEvent(mouse)
+    }
+  }
+
+  function handleMouseEvent(mouse) {
+    switch(mouse.button) {
+    case Qt.RightButton:
+      break;
+    case Qt.LeftButton:
+      break;
+    default:
+      break;
     }
   }
 }
