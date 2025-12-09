@@ -4,11 +4,16 @@ import qs.theme
 
 Item {
   id: leftContainerRoot
-  anchors.right: parent.left
-  anchors.verticalCenter: parent.verticalCenter
+
   property var vscreen
-  width: leftContainer.width
-  height: leftContainer.height
+
+  implicitWidth: leftContainer.width
+  implicitHeight: leftContainer.height
+
+  anchors {
+    right: parent.left
+    verticalCenter: parent.verticalCenter
+  }
 
   Rectangle {
     id: leftContainer

@@ -18,4 +18,6 @@ Singleton {
   property string pink: "#FF79C6"
 
   property int radius: 12
+
+  property string fontFamily: "Noto Sans"
 }

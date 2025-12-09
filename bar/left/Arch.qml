@@ -5,11 +5,12 @@ import qs.popups
 
 Item {
   id: archLogo
-  property var vscreen
-  property int imageSize: 28
+
   implicitHeight: hoverBackground.implicitHeight
   implicitWidth: hoverBackground.implicitWidth
 
+  property var vscreen
+  property int imageSize: 28
   property string archLogoPath: Static.getStaticFile("arch.svg")
   property string archHoverLogoPath: Static.getStaticFile("arch_white.svg")
 
@@ -32,9 +33,6 @@ Item {
 
   QXButton {
     id: hoverBackground
-    anchors {
-      centerIn: parent
-    }
     onClick: togglePowerMenu
     content: Component {
       id: hoverContent

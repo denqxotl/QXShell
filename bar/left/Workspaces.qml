@@ -16,24 +16,42 @@ Item {
     Repeater {
       model: Hyprland.workspaces
       delegate: QXButton {
-        forcedColor: (modelData.active && Hyprland.focusedMonitor != null && modelData.monitor.name === Hyprland.focusedMonitor.name) ? Theme.currentLine : null
-        forcedRadius: modelData.active ? 12 : null
-        visible: !modelData.monitor || (bar.vscreen && modelData.monitor.name === bar.vscreen.name)
-        onClick: () => {
-          if (modelData.active) return;
-          Hyprland.dispatch("workspace " + modelData.id)
-        }
+        forcedColor: getColorForActiveWorkspace(modelData)
+        forcedRadius: getRadiusForActiveWorkspace(modelData.active)
+        visible: shouldWorkspaceBeVisible(modelData)
+        onClick: () => { changeWorkspace(modelData.id, modelData.active) }
         content: Component {
-          Text {
-            id: workspaceText
-            text: modelData.name
-            font.pixelSize: 14
-            color: Theme.foreground
+          QXText {
+            text: modelData.id
+            font {
+              bold: modelData.active
+            }
           }
         }
-        anchors.verticalCenter: parent.verticalCenter
       }
     }
   }
+
+  function getColorForActiveWorkspace(workspace) {
+    if (
+      workspace.active && Hyprland.focusedMonitor != null &&
+      workspace.monitor.name === Hyprland.focusedMonitor.name
+    ) {
+      return Theme.currentLine
+    }
+    return null;
+  }
+
+  function shouldWorkspaceBeVisible(workspace) {
+    return !workspace.monitor || (bar.vscreen && workspace.monitor.name === bar.vscreen.name)
+  }
+
+  function getRadiusForActiveWorkspace(isActive) {
+    return isActive ? Theme.radius : null
+  }
+
+  function changeWorkspace(id, isActive) {
+    if (isActive) return;
+    Hyprland.dispatch("workspace " + id)
+  }
 }
-//F8F8F2

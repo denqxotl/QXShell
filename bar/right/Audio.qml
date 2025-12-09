@@ -27,7 +27,7 @@ Item {
     return Math.round((value || 0) * 100.0) + "%"
   }
 
-  property var outputValue: formatVolume(Pipewire.defaultAudioSink?.audio.volume)
+  property var outputValue: formatVolume(Pipewire.defaultAudioSink?.audio?.volume)
 
   QXButton {
     id: hoverBackground
@@ -47,11 +47,9 @@ Item {
           fillMode: Image.PreserveAspectFit
         }
 
-        Text {
-          id: layoutText
+        QXText {
           text: outputValue
           font.pixelSize: 11
-          color: Theme.foreground
         }
       }
     }
