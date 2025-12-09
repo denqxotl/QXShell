@@ -27,14 +27,16 @@ Item {
     return Math.round((value || 0) * 100.0) + "%"
   }
 
+  function togglePopup() {
+    var point = volumeRoot.mapToItem(null, 0, 0);
+    volumePopup.toggle('right', point.x + volumeRoot.width | 0, point.y);
+  }
+
   property var outputValue: formatVolume(Pipewire.defaultAudioSink?.audio?.volume)
 
   QXButton {
     id: hoverBackground
-    onClick: () => {
-      var point = volumeRoot.mapToItem(null, 0, 0);
-      volumePopup.toggle('right', point.x + volumeRoot.width | 0, point.y);
-    }
+    onClick: togglePopup
     anchors.centerIn: parent
     content: Component {
       Row {

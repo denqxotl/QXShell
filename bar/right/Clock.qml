@@ -35,34 +35,35 @@ Item {
 
   QXButton {
     id: hoverBackground
+
     onClick: () => {
       notificationCenter.startDetached()
     }
-    anchors.fill: parent
+
+    anchors {
+      fill: parent
+    }
+
     content: Component {
       Row {
         id: clockRow
         spacing: 12
-        Text {
+        QXText {
           id: timeBlock
           anchors.verticalCenter: parent.verticalCenter
           text: currentTime
           font.pixelSize: 15
           font.bold: true
-          color: Theme.foreground
         }
         Column {
-          spacing: 0
-          Text {
+          QXText {
             anchors.horizontalCenter: parent.horizontalCenter
             text: currentDate
             font.pixelSize: 10
-            color: Theme.foreground
           }
-          Text {
+          QXText {
             text: currentMonth
             font.pixelSize: 10
-            color: Theme.foreground
           }
         }
       }

@@ -1,7 +1,6 @@
 import QtQuick
 import qs.theme
 
-
 Text {
   font {
     pixelSize: 14

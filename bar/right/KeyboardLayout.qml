@@ -75,13 +75,10 @@ Item {
           fillMode: Image.PreserveAspectFit
         }
 
-        Text {
-          anchors.verticalCenter: parent.verticalCenter
+        QXText {
           id: layoutText
           text: keyboardLayout.currentLayout
-          font.pixelSize: 14
           font.bold: true
-          color: Theme.foreground
         }
       }
     }

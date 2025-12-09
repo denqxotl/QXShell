@@ -14,6 +14,14 @@ Item {
   property var networkSignalStrengthText: ""
   property bool networkConnected: false
 
+  function getNetworkIcon(isNetworkConnected) {
+    if(isNetworkConnected) {
+      return Static.getStaticFile("network.svg");
+    } else {
+      return Static.getStaticFile("wifi-dis.svg");
+    }
+  }
+
   Timer {
     interval: 1000
     running: true
@@ -43,19 +51,21 @@ Item {
     }
   }
 
+  function togglePopup() {
+    var point = networkRoot.mapToItem(null, 0, 0);
+    networkPopup.toggle("right", point.x + networkRoot.width | 0, point.y);
+  }
+
   QXButton {
     id: hoverBackground
     anchors.centerIn: parent
-    onClick: () => {
-      var point = networkRoot.mapToItem(null, 0, 0);
-      networkPopup.toggle("right", point.x + networkRoot.width | 0, point.y);
-    }
+    onClick: togglePopup
     content: Component {
       Row {
         anchors.centerIn: parent
         spacing: 4
         Image {
-          source: networkRoot.networkConnected ? Static.getStaticFile("network.svg") : Static.getStaticFile("wifi-dis.svg")
+          source: getNetworkIcon(networkRoot.networkConnected)
           width: 20
           height: 20
           fillMode: Image.PreserveAspectFit
