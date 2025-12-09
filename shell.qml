@@ -50,6 +50,11 @@ ShellRoot {
         id: networkPopup
         anchor.window: bar
       }
+
+      WifiInfo {
+        id: wifiInfoPopup
+        anchor.window: bar
+      }
     }
   }
 }

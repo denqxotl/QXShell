@@ -14,4 +14,13 @@ Singleton {
       .arg(staticPath)
       .arg(fileNameWithExtension)
   }
+
+  function getScriptPath(scriptNameWithExtension) {
+    var shellPath = Qt.resolvedUrl(".").toString()
+    var path = "%1/scripts/%2"
+      .arg(shellPath)
+      .arg(scriptNameWithExtension)
+
+    return path.replace("file://", "");
+  }
 }

@@ -5,13 +5,17 @@ import qs.popups
 
 Item {
   id: archLogo
+  property var vscreen
+  property int imageSize: 28
   implicitHeight: hoverBackground.implicitHeight
   implicitWidth: hoverBackground.implicitWidth
-  property var vscreen
+
   property string archLogoPath: Static.getStaticFile("arch.svg")
   property string archHoverLogoPath: Static.getStaticFile("arch_white.svg")
 
-  anchors.verticalCenter: parent.verticalCenter
+  anchors {
+    verticalCenter: parent.verticalCenter
+  }
 
   function getLogo() {
     if(hoverBackground.isHovered) {
@@ -21,25 +25,24 @@ Item {
     }
   }
 
+  function togglePowerMenu() {
+    var point = archLogo.mapToItem(null, 0, 0);
+    powerMenuPopup.toggle('left', point.x, point.y);
+  }
+
   QXButton {
     id: hoverBackground
-    anchors.centerIn: parent
-    onClick: () =>{
-      var point = archLogo.mapToItem(null, 0, 0);
-      powerMenuPopup.toggle('left', point.x, point.y);
+    anchors {
+      centerIn: parent
     }
-
+    onClick: togglePowerMenu
     content: Component {
       id: hoverContent
-      Row {
-        anchors.centerIn: parent
-        spacing: 4
-        Image {
-          source: archLogo.getLogo()
-          width: 28
-          height: 28
-          fillMode: Image.PreserveAspectFit
-        }
+      Image {
+        source: archLogo.getLogo()
+        width: archLogo.imageSize
+        height: archLogo.imageSize
+        fillMode: Image.PreserveAspectFit
       }
     }
   }

@@ -3,7 +3,6 @@ import Quickshell.Io
 import QtQuick
 import qs
 import qs.theme
-import qs.popups.powermenu
 import qs.components
 
 Popup {
@@ -13,7 +12,7 @@ Popup {
 
   Process {
     id: fetchNetworksProcess
-    command: ["sh", "-c", "/home/denqxotl/.config/quickshell/popups/scripts/available_networks.sh"]
+    command: ["sh", "-c", Static.getScriptPath("available_networks.sh")]
     running: true
     stdout: StdioCollector {
       onStreamFinished: {
@@ -26,6 +25,7 @@ Popup {
 
   content: Component {
     Column {
+      id: contentColumn
       Text {
         width: 250
         text: "Connected Network"
@@ -73,6 +73,10 @@ Popup {
         model: networkManagerPopup.networks
         QXButton {
           visible: modelData.ssid !== ""
+          onClick: () => {
+            // var point = contentColumn.mapToItem(null, 0, 0);
+            // wifiInfoPopup.toggle("right", point.x | 0, point.y);
+          }
           content: Component {
             Row {
               spacing: 8
