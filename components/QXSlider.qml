@@ -5,21 +5,29 @@ import qs.theme
 
 Slider {
     id: qxslider
-    anchors.verticalCenter: parent.verticalCenter
-    width: 250
+    property int qxSliderWidth: 250
+    property int qxSliderHeight: 20
+
+    anchors {
+        verticalCenter: parent.verticalCenter
+    }
+
+    implicitWidth: qxSliderWidth
+
     from: 0
     to: 100
+
     background: Rectangle {
         id: sliderBackground
-        implicitWidth: 250
-        implicitHeight: 20
-        radius: 12
+        implicitWidth: qxslider.qxSliderWidth
+        implicitHeight: qxslider.qxSliderHeight
+        radius: Theme.radius
         color: Theme.currentLine
         Rectangle {
-            radius: 12
+            radius: Theme.radius
+            color: Theme.purple
             width: qxslider.visualPosition * parent.width
             height: parent.height
-            color: Theme.purple
         }
     }
     handle: Rectangle {
