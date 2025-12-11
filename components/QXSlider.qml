@@ -9,9 +9,6 @@ Slider {
     width: 250
     from: 0
     to: 100
-    onValueChanged: {
-        Pipewire.defaultAudioSink.audio.volume = value / 100.0;
-    }
     background: Rectangle {
         id: sliderBackground
         implicitWidth: 250
