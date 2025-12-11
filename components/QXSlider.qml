@@ -6,11 +6,9 @@ import qs.theme
 Slider {
     id: qxslider
     anchors.verticalCenter: parent.verticalCenter
-    property int value: 0
     width: 250
     from: 0
     to: 100
-    value: value
     onValueChanged: {
         Pipewire.defaultAudioSink.audio.volume = value / 100.0;
     }

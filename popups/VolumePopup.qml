@@ -38,33 +38,12 @@ Popup {
                         volumeSlider.value = volumeSlider.volumeValue;
                     }
                 }
-                Slider {
+                QXSlider {
                     id: volumeSlider
-                    anchors.verticalCenter: volumeRow.verticalCenter
                     property var volumeValue: Math.round((Pipewire.defaultAudioSink?.audio.volume || 0) * 100.0)
-                    width: 250
-                    from: 0
-                    to: 100
                     value: volumeValue
                     onValueChanged: {
                         Pipewire.defaultAudioSink.audio.volume = value / 100.0;
-                    }
-                    background: Rectangle {
-                        id: sliderBackground
-                        implicitWidth: 250
-                        implicitHeight: 20
-                        radius: 12
-                        color: Theme.currentLine
-                        Rectangle {
-                            radius: 12
-                            width: volumeSlider.visualPosition * parent.width
-                            height: parent.height
-                            color: Theme.purple
-                        }
-                    }
-                    handle: Rectangle {
-                        x: volumeSlider.leftPadding + volumeSlider.visualPosition * (volumeSlider.width - volumeSlider.leftPadding - volumeSlider.rightPadding) - width / 2
-                        y: parent.height / 2 - height / 2
                     }
                 }
             }
@@ -86,33 +65,12 @@ Popup {
                     sourceSize: Qt.size(20, 20)
                     fillMode: Image.PreserveAspectFit
                 }
-                Slider {
+                QXSlider {
                     id: microphoneSlider
                     property var microphoneValue: Math.round((Pipewire.defaultAudioSource?.audio.volume || 0) * 100.0)
-                    anchors.verticalCenter: microphoneRow.verticalCenter
-                    width: 250
-                    from: 0
-                    to: 100
                     value: microphoneValue
                     onValueChanged: {
                         Pipewire.defaultAudioSource.audio.volume = value / 100.0;
-                    }
-                    background: Rectangle {
-                        id: sliderBackgroundMic
-                        implicitWidth: 250
-                        implicitHeight: 20
-                        radius: 12
-                        color: Theme.currentLine
-                        Rectangle {
-                            radius: 12
-                            width: microphoneSlider.visualPosition * parent.width
-                            height: parent.height
-                            color: Theme.purple
-                        }
-                    }
-                    handle: Rectangle {
-                        x: microphoneSlider.leftPadding + microphoneSlider.visualPosition * (microphoneSlider.width - microphoneSlider.leftPadding - microphoneSlider.rightPadding) - width / 2
-                        y: parent.height / 2 - height / 2
                     }
                 }
             }
