@@ -84,9 +84,7 @@ Rectangle {
         acceptedButtons: Qt.LeftButton | Qt.RightButton
         onEntered: qxbutton.isHovered = true
         onExited: qxbutton.isHovered = false
-        onReleased: mouse => {
-            handleOnClick(mouse);
-        }
+        onClicked: mouse => handleOnClick(mouse)
     }
 
     Behavior on radius {
