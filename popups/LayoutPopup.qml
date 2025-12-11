@@ -6,46 +6,47 @@ import qs.components
 import qs.theme
 
 Popup {
-  id: layoutPopup
-  property var layouts: []
+    id: layoutPopup
+    property var layouts: []
 
-  Process {
-    id: changeLayoutProcess
-  }
-
-  property var layoutsList: Process {
-    id: listLayoutsProcess
-    command: ['sh', '-c', "hyprctl getoption input:kb_layout | grep 'str: ' | awk -F'str: ' '{print $2}'"]
-    running: true
-    stdout: StdioCollector {
-      onStreamFinished: {
-        layoutPopup.layouts = this.text.split(',').map(function(item) { return item.toUpperCase(); });
-      }
+    Process {
+        id: changeLayoutProcess
     }
-  }
 
-  content: Component {
-    Column {
-      anchors.centerIn: parent
-      spacing: 12
-      Repeater {
-        model: layoutPopup.layouts
-        delegate: QXButton {
-          onClick: () => {
-            changeLayoutProcess.exec(["sh", "-c", "hyprctl switchxkblayout keychron--keychron-link--keyboard " + index]);
-            PopupManager.close(layoutPopup);
-          }
-          content: Component {
-            Text {
-              anchors.centerIn: parent
-              text: modelData
-              font.pixelSize: 16
-              font.bold: true
-              color: Theme.foreground
+    property var layoutsList: Process {
+        id: listLayoutsProcess
+        command: ['sh', '-c', "hyprctl getoption input:kb_layout | grep 'str: ' | awk -F'str: ' '{print $2}'"]
+        running: true
+        stdout: StdioCollector {
+            onStreamFinished: {
+                layoutPopup.layouts = this.text.split(',').map(function (item) {
+                    return item.toUpperCase();
+                });
             }
-          }
         }
-      }
     }
-  }
+
+    content: Component {
+        Column {
+            anchors.centerIn: parent
+            spacing: 12
+            Repeater {
+                model: layoutPopup.layouts
+                delegate: QXButton {
+                    onClick: () => {
+                        changeLayoutProcess.exec(["sh", "-c", "hyprctl switchxkblayout keychron--keychron-link--keyboard " + index]);
+                        PopupManager.close(layoutPopup);
+                    }
+                    content: Component {
+                        QXText {
+                            anchors.centerIn: parent
+                            text: modelData
+                            font.pixelSize: 16
+                            font.bold: true
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

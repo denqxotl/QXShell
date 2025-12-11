@@ -6,101 +6,101 @@ import qs.theme
 import qs.components
 
 Popup {
-  id: networkManagerPopup
-  property var networks: []
-  property var connectedNetwork: null
+    id: networkManagerPopup
+    property var networks: []
+    property var connectedNetwork: null
 
-  Process {
-    id: fetchNetworksProcess
-    command: ["sh", "-c", Static.getScriptPath("available_networks.sh")]
-    running: true
-    stdout: StdioCollector {
-      onStreamFinished: {
-        var allNetworks = JSON.parse(this.text);
-        networkManagerPopup.connectedNetwork = allNetworks.find(n => n.in_use) || null;
-        networkManagerPopup.networks = allNetworks.filter(n => !n.in_use);
-      }
-    }
-  }
-
-  content: Component {
-    Column {
-      id: contentColumn
-      Text {
-        width: 250
-        text: "Connected Network"
-        visible: networkManagerPopup.connectedNetwork !== null
-        color: Theme.foreground
-        font.pixelSize: 16
-        font.bold: true
-        padding: 8
-      }
-      QXButton {
-        id: connectedNetworkButton
-        visible: networkManagerPopup.connectedNetwork !== null
-        content: Component {
-          Row {
-            spacing: 8
-            Image {
-              anchors.verticalCenter: parent.verticalCenter
-              source: Static.getStaticFile("network.svg")
-              width: 20
-              height: 20
+    Process {
+        id: fetchNetworksProcess
+        command: ["sh", "-c", Static.getScriptPath("available_networks.sh")]
+        running: true
+        stdout: StdioCollector {
+            onStreamFinished: {
+                var allNetworks = JSON.parse(this.text);
+                networkManagerPopup.connectedNetwork = allNetworks.find(n => n.in_use) || null;
+                networkManagerPopup.networks = allNetworks.filter(n => !n.in_use);
             }
-            Text {
-              width: 250
-              text: networkManagerPopup.connectedNetwork?.ssid || ""
-              color: Theme.foreground
-              font.pixelSize: 14
-            }
-            Text {
-              text: networkManagerPopup.connectedNetwork?.signal + "%"
-              color: Theme.foreground
-              font.pixelSize: 10
-            }
-          }
         }
-      }
-      Text {
-        width: 250
-        text: "Available Networks"
-        color: Theme.foreground
-        font.pixelSize: 16
-        font.bold: true
-        padding: 8
-      }
-      Repeater {
-        model: networkManagerPopup.networks
-        QXButton {
-          visible: modelData.ssid !== ""
-          onClick: () => {
-            // var point = contentColumn.mapToItem(null, 0, 0);
-            // wifiInfoPopup.toggle("right", point.x | 0, point.y);
-          }
-          content: Component {
-            Row {
-              spacing: 8
-              Image {
-                anchors.verticalCenter: parent.verticalCenter
-                source: Static.getStaticFile("network.svg")
-                width: 20
-                height: 20
-              }
-              Text {
+    }
+
+    content: Component {
+        Column {
+            id: contentColumn
+            Text {
                 width: 250
-                text: modelData.ssid
+                text: "Connected Network"
+                visible: networkManagerPopup.connectedNetwork !== null
                 color: Theme.foreground
-                font.pixelSize: 14
-              }
-              Text {
-                text: modelData.signal + "%"
-                color: Theme.foreground
-                font.pixelSize: 10
-              }
+                font.pixelSize: 16
+                font.bold: true
+                padding: 8
             }
-          }
+            QXButton {
+                id: connectedNetworkButton
+                visible: networkManagerPopup.connectedNetwork !== null
+                content: Component {
+                    Row {
+                        spacing: 8
+                        Image {
+                            anchors.verticalCenter: parent.verticalCenter
+                            source: Static.getStaticFile("network.svg")
+                            width: 20
+                            height: 20
+                        }
+                        Text {
+                            width: 250
+                            text: networkManagerPopup.connectedNetwork?.ssid || ""
+                            color: Theme.foreground
+                            font.pixelSize: 14
+                        }
+                        Text {
+                            text: networkManagerPopup.connectedNetwork?.signal + "%"
+                            color: Theme.foreground
+                            font.pixelSize: 10
+                        }
+                    }
+                }
+            }
+            Text {
+                width: 250
+                text: "Available Networks"
+                color: Theme.foreground
+                font.pixelSize: 16
+                font.bold: true
+                padding: 8
+            }
+            Repeater {
+                model: networkManagerPopup.networks
+                QXButton {
+                    visible: modelData.ssid !== ""
+                    onClick: () => {
+                    // var point = contentColumn.mapToItem(null, 0, 0);
+                    // wifiInfoPopup.toggle("right", point.x | 0, point.y);
+                    }
+                    content: Component {
+                        Row {
+                            spacing: 8
+                            Image {
+                                anchors.verticalCenter: parent.verticalCenter
+                                source: Static.getStaticFile("network.svg")
+                                width: 20
+                                height: 20
+                            }
+                            Text {
+                                width: 250
+                                text: modelData.ssid
+                                color: Theme.foreground
+                                font.pixelSize: 14
+                            }
+                            Text {
+                                text: modelData.signal + "%"
+                                color: Theme.foreground
+                                font.pixelSize: 10
+                            }
+                        }
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }

@@ -6,54 +6,54 @@ import qs.components
 import qs.theme
 
 Item {
-  id: volumeRoot
-  implicitHeight: hoverBackground.implicitHeight
-  implicitWidth: hoverBackground.implicitWidth
+    id: volumeRoot
+    implicitHeight: hoverBackground.implicitHeight
+    implicitWidth: hoverBackground.implicitWidth
 
-  anchors.verticalCenter: parent.verticalCenter
+    anchors.verticalCenter: parent.verticalCenter
 
-  PwObjectTracker {
-    objects: [Pipewire.defaultAudioSink]
-  }
-
-  Connections {
-    target: Pipewire.defaultAudioSink?.audio
-    function onVolumeChanged() {
-      outputValue = formatVolume(Pipewire.defaultAudioSink?.audio.volume)
+    PwObjectTracker {
+        objects: [Pipewire.defaultAudioSink]
     }
-  }
 
-  function formatVolume(value) {
-    return Math.round((value || 0) * 100.0) + "%"
-  }
+    Connections {
+        target: Pipewire.defaultAudioSink?.audio
+        function onVolumeChanged() {
+            outputValue = formatVolume(Pipewire.defaultAudioSink?.audio.volume);
+        }
+    }
 
-  function togglePopup() {
-    var point = volumeRoot.mapToItem(null, 0, 0);
-    volumePopup.toggle('right', point.x + volumeRoot.width | 0, point.y);
-  }
+    function formatVolume(value) {
+        return Math.round((value || 0) * 100.0) + "%";
+    }
 
-  property var outputValue: formatVolume(Pipewire.defaultAudioSink?.audio?.volume)
+    function togglePopup() {
+        var point = volumeRoot.mapToItem(null, 0, 0);
+        volumePopup.toggle('right', point.x + volumeRoot.width | 0, point.y);
+    }
 
-  QXButton {
-    id: hoverBackground
-    onClick: togglePopup
-    anchors.centerIn: parent
-    content: Component {
-      Row {
+    property var outputValue: formatVolume(Pipewire.defaultAudioSink?.audio?.volume)
+
+    QXButton {
+        id: hoverBackground
+        onClick: togglePopup
         anchors.centerIn: parent
-        spacing: 4
-        Image {
-          source: Static.getStaticFile("audio.svg")
-          width: 20
-          height: 20
-          fillMode: Image.PreserveAspectFit
-        }
+        content: Component {
+            Row {
+                anchors.centerIn: parent
+                spacing: 4
+                Image {
+                    source: Static.getStaticFile("audio.svg")
+                    width: 20
+                    height: 20
+                    fillMode: Image.PreserveAspectFit
+                }
 
-        QXText {
-          text: outputValue
-          font.pixelSize: 11
+                QXText {
+                    text: outputValue
+                    font.pixelSize: 11
+                }
+            }
         }
-      }
     }
-  }
 }

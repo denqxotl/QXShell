@@ -5,38 +5,39 @@ import Quickshell.Wayland
 import qs.theme
 
 PanelWindow {
-  id: wallpaper
-  WlrLayershell.layer: WlrLayer.Background
-  WlrLayershell.exclusiveZone: 1
-  property var vscreen
-  visible: true
-  screen: vscreen
-  implicitHeight: vscreen.height
-  implicitWidth: vscreen.width
+    id: wallpaper
+    WlrLayershell.layer: WlrLayer.Background
+    WlrLayershell.exclusiveZone: 1
+    property var vscreen
 
-  color: Theme.transparent
-  Rectangle {
-    anchors.fill: parent
-    Image {
-      anchors.fill: parent
-      fillMode: Image.PreserveAspectCrop
-      source: "file:///home/denqxotl/Pictures/tg9.jpeg"
-    }
-    MouseArea {
-      anchors.fill: parent
-      acceptedButtons: Qt.LeftButton | Qt.RightButton
-      onClicked: handleMouseEvent(mouse)
-    }
-  }
+    screen: vscreen
+    implicitHeight: vscreen.height
+    implicitWidth: vscreen.width
 
-  function handleMouseEvent(mouse) {
-    switch(mouse.button) {
-    case Qt.RightButton:
-      break;
-    case Qt.LeftButton:
-      break;
-    default:
-      break;
+    color: Theme.transparent
+
+    Rectangle {
+        anchors.fill: parent
+        Image {
+            anchors.fill: parent
+            fillMode: Image.PreserveAspectCrop
+            source: Theme.wallpaperPath
+        }
+        MouseArea {
+            anchors.fill: parent
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
+            onClicked: handleMouseEvent
+        }
     }
-  }
+
+    function handleMouseEvent(mouse) {
+        switch (mouse.button) {
+        case Qt.RightButton:
+            break;
+        case Qt.LeftButton:
+            break;
+        default:
+            break;
+        }
+    }
 }

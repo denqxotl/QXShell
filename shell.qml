@@ -7,54 +7,54 @@ import qs.popups
 import qs.wallpaper
 
 ShellRoot {
-  Variants {
-    id: variants
-    model: Quickshell.screens
+    Variants {
+        id: variants
+        model: Quickshell.screens
 
-    Item {
-      property var modelData
+        Item {
+            property var modelData
 
-      Wallpaper {
-        vscreen: modelData
-      }
-      Backdrop {
-        vscreen: modelData
-      }
+            Wallpaper {
+                vscreen: modelData
+            }
+            Backdrop {
+                vscreen: modelData
+            }
 
-      Bar {
-        id: bar
-        vscreen: modelData
-      }
+            Bar {
+                id: bar
+                vscreen: modelData
+            }
 
-      PowerMenu {
-        id: powerMenuPopup
-        anchor.window: bar
-      }
+            PowerMenu {
+                id: powerMenuPopup
+                anchor.window: bar
+            }
 
-      TrayPopup {
-        id: trayPopup
-        anchor.window: bar
-      }
+            TrayPopup {
+                id: trayPopup
+                anchor.window: bar
+            }
 
-      LayoutPopup {
-        id: layoutPopup
-        anchor.window: bar
-      }
+            LayoutPopup {
+                id: layoutPopup
+                anchor.window: bar
+            }
 
-      VolumePopup {
-        id: volumePopup
-        anchor.window: bar
-      }
+            VolumePopup {
+                id: volumePopup
+                anchor.window: bar
+            }
 
-      NetworkPopup {
-        id: networkPopup
-        anchor.window: bar
-      }
+            NetworkPopup {
+                id: networkPopup
+                anchor.window: bar
+            }
 
-      WifiInfo {
-        id: wifiInfoPopup
-        anchor.window: bar
-      }
+            WifiInfo {
+                id: wifiInfoPopup
+                anchor.window: bar
+            }
+        }
     }
-  }
 }

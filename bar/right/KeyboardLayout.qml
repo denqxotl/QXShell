@@ -5,82 +5,82 @@ import qs.components
 import qs.theme
 
 Item {
-  id: keyboardLayout
-  implicitHeight: hoverBackground.implicitHeight
-  implicitWidth: hoverBackground.implicitWidth
+    id: keyboardLayout
+    implicitHeight: hoverBackground.implicitHeight
+    implicitWidth: hoverBackground.implicitWidth
 
-  anchors.verticalCenter: parent.verticalCenter
-  property string currentLayout: "..."
+    anchors.verticalCenter: parent.verticalCenter
+    property string currentLayout: "..."
 
-  Process {
-    id: layoutProcess
-    command: ['sh', '-c', '/home/denqxotl/.config/quickshell/bar/right/keyboardlayout/layoutlistener.sh']
-    running: true
-    stdout: SplitParser {
-      id: layoutParser
-      onRead: (data) => {
-        keyboardLayout.currentLayout = parseLayout(data.toString().trim())
-      }
-    }
-  }
-
-  function parseLayout(layout) {
-    switch(layout) {
-      case "English (US)":
-        return "EN";
-      case "Ukrainian":
-        return "UA";
-      default:
-        return "...";
-    }
-  }
-
-  Process {
-    id: initialLayoutProcess
-    command: ['hyprctl', 'devices', '-j']
-    running: true
-    stdout: StdioCollector {
-      onStreamFinished: {
-        const raw = this.text.toString().trim();
-        try {
-          const devices = JSON.parse(raw);
-          const keyboard = devices.keyboards.find(k => k.active_keymap);
-          if (keyboard) {
-            keyboardLayout.currentLayout = parseLayout(keyboard.active_keymap);
-          }
-        } catch (e) {
-            console.error("JSON Parsing failed:", e);
-            keyboardLayout.currentLayout = "...";
+    Process {
+        id: layoutProcess
+        command: ['sh', '-c', '/home/denqxotl/.config/quickshell/bar/right/keyboardlayout/layoutlistener.sh']
+        running: true
+        stdout: SplitParser {
+            id: layoutParser
+            onRead: data => {
+                keyboardLayout.currentLayout = parseLayout(data.toString().trim());
+            }
         }
-        initialLayoutProcess.running = false;
-      }
     }
-  }
 
-  QXButton {
-    id: hoverBackground
-    onClick: () => {
-      var point = keyboardLayout.mapToItem(null, 0, 0);
-      layoutPopup.toggle("center", point.x, point.y);
+    function parseLayout(layout) {
+        switch (layout) {
+        case "English (US)":
+            return "EN";
+        case "Ukrainian":
+            return "UA";
+        default:
+            return "...";
+        }
     }
-    anchors.centerIn: parent
-    content: Component {
-      Row {
+
+    Process {
+        id: initialLayoutProcess
+        command: ['hyprctl', 'devices', '-j']
+        running: true
+        stdout: StdioCollector {
+            onStreamFinished: {
+                const raw = this.text.toString().trim();
+                try {
+                    const devices = JSON.parse(raw);
+                    const keyboard = devices.keyboards.find(k => k.active_keymap);
+                    if (keyboard) {
+                        keyboardLayout.currentLayout = parseLayout(keyboard.active_keymap);
+                    }
+                } catch (e) {
+                    console.error("JSON Parsing failed:", e);
+                    keyboardLayout.currentLayout = "...";
+                }
+                initialLayoutProcess.running = false;
+            }
+        }
+    }
+
+    QXButton {
+        id: hoverBackground
+        onClick: () => {
+            var point = keyboardLayout.mapToItem(null, 0, 0);
+            layoutPopup.toggle("center", point.x, point.y);
+        }
         anchors.centerIn: parent
-        spacing: 4
-        Image {
-          source: Static.getStaticFile("layout.svg")
-          width: 19
-          height: 19
-          fillMode: Image.PreserveAspectFit
-        }
+        content: Component {
+            Row {
+                anchors.centerIn: parent
+                spacing: 4
+                Image {
+                    source: Static.getStaticFile("layout.svg")
+                    width: 19
+                    height: 19
+                    fillMode: Image.PreserveAspectFit
+                }
 
-        QXText {
-          id: layoutText
-          text: keyboardLayout.currentLayout
-          font.bold: true
+                QXText {
+                    id: layoutText
+                    text: keyboardLayout.currentLayout
+                    font.bold: true
+                }
+            }
         }
-      }
     }
-  }
 }

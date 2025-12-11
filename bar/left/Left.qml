@@ -3,31 +3,35 @@ import Quickshell
 import qs.theme
 
 Item {
-  id: leftContainerRoot
+    id: leftContainerRoot
 
-  property var vscreen
+    property var vscreen
 
-  implicitWidth: leftContainer.width
-  implicitHeight: leftContainer.height
+    implicitWidth: leftContainer.width
+    implicitHeight: leftContainer.height
 
-  anchors {
-    right: parent.left
-    verticalCenter: parent.verticalCenter
-  }
-
-  Rectangle {
-    id: leftContainer
-    width: leftRow.width
-    height: leftRow.height
-    color: Theme.transparent
-
-    Row {
-      id: leftRow
-      spacing: 5
-      anchors.verticalCenter: parent.verticalCenter
-      anchors.left: parent.left
-      Arch { vscreen: vscreen }
-      Workspaces { vscreen: vscreen }
+    anchors {
+        right: parent.left
+        verticalCenter: parent.verticalCenter
     }
-  }
+
+    Rectangle {
+        id: leftContainer
+        width: leftRow.width
+        height: leftRow.height
+        color: Theme.transparent
+
+        Row {
+            id: leftRow
+            spacing: 5
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            Arch {
+                vscreen: vscreen
+            }
+            Workspaces {
+                vscreen: vscreen
+            }
+        }
+    }
 }

@@ -1,3 +1,5 @@
+# !/bin/bash
+
 nmcli -t -f IN-USE,SSID,SIGNAL,SECURITY,CHAN device wifi list \
 | jq -R -s '
   split("\n")[:-1]
@@ -10,7 +12,7 @@ nmcli -t -f IN-USE,SSID,SIGNAL,SECURITY,CHAN device wifi list \
         if .[3] == "" then
           []
         else
-          .[3] | split(" ") # WPA1 WPA2 -> ["WPA1","WPA2"]
+          .[3] | split(" ")
         end
       ),
       channel: (.[4] | tonumber)
