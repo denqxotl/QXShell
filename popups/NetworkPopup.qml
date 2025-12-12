@@ -26,11 +26,10 @@ Popup {
     content: Component {
         Column {
             id: contentColumn
-            Text {
+            QXText {
                 width: 250
                 text: "Connected Network"
                 visible: networkManagerPopup.connectedNetwork !== null
-                color: Theme.foreground
                 font.pixelSize: 16
                 font.bold: true
                 padding: 8
@@ -41,30 +40,23 @@ Popup {
                 content: Component {
                     Row {
                         spacing: 8
-                        Image {
-                            anchors.verticalCenter: parent.verticalCenter
-                            source: Static.getStaticFile("network.svg")
-                            width: 20
-                            height: 20
+                        QXIcon {
+                            icon: "network"
                         }
-                        Text {
+                        QXText {
                             width: 250
                             text: networkManagerPopup.connectedNetwork?.ssid || ""
-                            color: Theme.foreground
-                            font.pixelSize: 14
                         }
-                        Text {
+                        QXText {
                             text: networkManagerPopup.connectedNetwork?.signal + "%"
-                            color: Theme.foreground
                             font.pixelSize: 10
                         }
                     }
                 }
             }
-            Text {
+            QXText {
                 width: 250
                 text: "Available Networks"
-                color: Theme.foreground
                 font.pixelSize: 16
                 font.bold: true
                 padding: 8
@@ -80,21 +72,16 @@ Popup {
                     content: Component {
                         Row {
                             spacing: 8
-                            Image {
+                            QXIcon {
                                 anchors.verticalCenter: parent.verticalCenter
-                                source: Static.getStaticFile("network.svg")
-                                width: 20
-                                height: 20
+                                icon: "network"
                             }
-                            Text {
+                            QXText {
                                 width: 250
                                 text: modelData.ssid
-                                color: Theme.foreground
-                                font.pixelSize: 14
                             }
-                            Text {
+                            QXText {
                                 text: modelData.signal + "%"
-                                color: Theme.foreground
                                 font.pixelSize: 10
                             }
                         }

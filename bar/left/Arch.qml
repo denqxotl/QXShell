@@ -11,8 +11,7 @@ Item {
 
     property var vscreen
     property int imageSize: 28
-    property string archLogoPath: Static.getStaticFile("arch.svg")
-    property string archHoverLogoPath: Static.getStaticFile("arch_white.svg")
+    property string archLogo: "arch_white"
 
     anchors {
         verticalCenter: parent.verticalCenter
@@ -36,11 +35,9 @@ Item {
         onClick: togglePowerMenu
         content: Component {
             id: hoverContent
-            Image {
-                source: archLogo.getLogo()
-                width: archLogo.imageSize
-                height: archLogo.imageSize
-                fillMode: Image.PreserveAspectFit
+            QXIcon {
+                icon: archLogo.archLogo
+                size: archLogo.imageSize
             }
         }
     }

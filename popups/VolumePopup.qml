@@ -1,6 +1,3 @@
-import Quickshell
-import Quickshell.Io
-import Quickshell.Hyprland
 import Quickshell.Services.Pipewire
 import QtQuick
 import QtQuick.Controls
@@ -24,12 +21,8 @@ Popup {
                 id: volumeRow
                 spacing: 8
                 anchors.verticalCenter: volumePopup.verticalCenter
-                Image {
-                    source: Static.getStaticFile("audio.svg")
-                    width: 22
-                    height: 22
-                    sourceSize: Qt.size(22, 22)
-                    fillMode: Image.PreserveAspectFit
+                QXIcon {
+                    icon: "audio"
                 }
                 Connections {
                     target: Pipewire.defaultAudioSink?.audio
@@ -58,12 +51,8 @@ Popup {
                         microphoneSlider.value = microphoneSlider.microphoneValue;
                     }
                 }
-                Image {
-                    source: Static.getStaticFile("microphone.svg")
-                    width: 20
-                    height: 20
-                    sourceSize: Qt.size(20, 20)
-                    fillMode: Image.PreserveAspectFit
+                QXIcon {
+                    icon: "microphone"
                 }
                 QXSlider {
                     id: microphoneSlider

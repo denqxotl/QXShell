@@ -11,22 +11,22 @@ Popup {
     property var powerMenuActions: [
         {
             type: "lock",
-            icon: "lock.svg",
+            icon: "lock",
             action: "hyprctl dispatch exec hyprlock"
         },
         {
             type: "sleep",
-            icon: "sleep.svg",
+            icon: "sleep",
             action: "systemctl suspend"
         },
         {
             type: "reboot",
-            icon: "restart.svg",
+            icon: "restart",
             action: "systemctl reboot"
         },
         {
             type: "poweroff",
-            icon: "poweroff.svg",
+            icon: "poweroff",
             action: "systemctl poweroff"
         }
     ]
@@ -45,12 +45,9 @@ Popup {
                 delegate: QXButton {
                     onClick: () => executeAction(modelData.action)
                     content: Component {
-                        Image {
-                            source: Static.getStaticFile(modelData.icon)
-                            width: powerMenuPopup.iconSize
-                            height: powerMenuPopup.iconSize
-                            fillMode: Image.PreserveAspectFit
-                            sourceSize: Qt.size(powerMenuPopup.iconSize, powerMenuPopup.iconSize)
+                        QXIcon {
+                            icon: modelData.icon
+                            size: powerMenuPopup.iconSize
                         }
                     }
                 }
