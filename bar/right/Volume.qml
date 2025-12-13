@@ -20,11 +20,6 @@ Item {
         objects: [sink]
     }
 
-    function togglePopup() {
-        var point = volumeRoot.mapToItem(null, 0, 0);
-        volumePopup.toggle('right', point.x + volumeRoot.width | 0, point.y);
-    }
-
     function getVolumeIcon() {
         if (sink?.audio.muted || sink?.audio.volume === 0) {
             return "volume_muted";

@@ -23,7 +23,7 @@ Item {
             anchors.right: parent.right
             Tray {}
             SystemMonitor {}
-            Audio {}
+            Volume {}
             Network {}
             KeyboardLayout {}
             Clock {}

@@ -46,7 +46,7 @@ Scope {
             exclusiveZone: 0
 
             implicitWidth: 400
-            implicitHeight: 60
+            implicitHeight: 70
             color: "transparent"
 
             mask: Region {}
