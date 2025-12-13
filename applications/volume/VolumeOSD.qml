@@ -1,0 +1,96 @@
+import QtQuick
+import QtQuick.Layouts
+import Quickshell
+import Quickshell.Services.Pipewire
+import qs.theme
+import qs.components
+
+Scope {
+    id: root
+    property var sink: Pipewire.defaultAudioSink
+
+    PwObjectTracker {
+        objects: [sink]
+    }
+
+    Connections {
+        target: sink?.audio
+
+        function onVolumeChanged() {
+            root.shouldShowOsd = true;
+            hideTimer.restart();
+        }
+
+        function onMutedChanged() {
+            root.shouldShowOsd = true;
+            hideTimer.restart();
+        }
+    }
+
+    property bool shouldShowOsd: false
+
+    Timer {
+        id: hideTimer
+        interval: 1000
+        onTriggered: root.shouldShowOsd = false
+    }
+
+    LazyLoader {
+        active: root.shouldShowOsd
+
+        PanelWindow {
+            anchors {
+                top: true
+                right: true
+            }
+            exclusiveZone: 0
+
+            implicitWidth: 400
+            implicitHeight: 60
+            color: "transparent"
+
+            mask: Region {}
+
+            Rectangle {
+                opacity: 0.8
+                anchors.rightMargin: 12
+                anchors.topMargin: 12
+                anchors.fill: parent
+                radius: Theme.radius * 1.5
+                color: Theme.background
+
+                RowLayout {
+                    anchors {
+                        fill: parent
+                        leftMargin: 12
+                        rightMargin: 12
+                    }
+                    QXIcon {
+                        size: 25
+                        icon: sink?.audio.muted || sink?.audio.volume == 0 ? "volume_muted" : "volume_max"
+                    }
+
+                    Rectangle {
+                        Layout.fillWidth: true
+                        color: Theme.selection
+
+                        implicitHeight: 10
+                        radius: 20
+
+                        Rectangle {
+                            color: Theme.purple
+                            anchors {
+                                left: parent.left
+                                top: parent.top
+                                bottom: parent.bottom
+                            }
+
+                            implicitWidth: parent.width * (sink?.audio.volume ?? 0)
+                            radius: parent.radius
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

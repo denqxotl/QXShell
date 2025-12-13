@@ -6,24 +6,18 @@ import qs.theme
 
 Item {
     id: volumeRoot
+    visible: Pipewire.ready
     implicitHeight: hoverBackground.implicitHeight
     implicitWidth: hoverBackground.implicitWidth
 
-    anchors.verticalCenter: parent.verticalCenter
+    property var sink: Pipewire.defaultAudioSink
+
+    anchors {
+        verticalCenter: parent.verticalCenter
+    }
 
     PwObjectTracker {
-        objects: [Pipewire.defaultAudioSink]
-    }
-
-    Connections {
-        target: Pipewire.defaultAudioSink?.audio
-        function onVolumeChanged() {
-            outputValue = formatVolume(Pipewire.defaultAudioSink?.audio.volume);
-        }
-    }
-
-    function formatVolume(value) {
-        return Math.round((value || 0) * 100.0) + "%";
+        objects: [sink]
     }
 
     function togglePopup() {
@@ -31,26 +25,33 @@ Item {
         volumePopup.toggle('right', point.x + volumeRoot.width | 0, point.y);
     }
 
-    property var outputValue: formatVolume(Pipewire.defaultAudioSink?.audio?.volume)
+    function getVolumeIcon() {
+        if (sink?.audio.muted || sink?.audio.volume === 0) {
+            return "volume_muted";
+        }
+        return "volume_max";
+    }
+
+    function getVolumeText() {
+        if (sink?.audio.muted || sink?.audio.volume === 0) {
+            return null;
+        }
+        return Math.round(sink?.audio.volume * 100) + "%";
+    }
 
     QXButton {
         id: hoverBackground
-        onClick: togglePopup
-        anchors.centerIn: parent
+        onClick: () => {}
         content: Component {
             Row {
                 anchors.centerIn: parent
                 spacing: 4
-                Image {
-                    source: Static.getStaticFile("audio.svg")
-                    width: 20
-                    height: 20
-                    fillMode: Image.PreserveAspectFit
+                QXIcon {
+                    icon: getVolumeIcon()
                 }
-
                 QXText {
-                    text: outputValue
-                    font.pixelSize: 11
+                    text: getVolumeText()
+                    font.pixelSize: 10
                 }
             }
         }

@@ -49,7 +49,6 @@ Rectangle {
     }
 
     function handleOnClick(mouse) {
-        console.log('Clocked');
         switch (mouse.button) {
         case Qt.LeftButton:
             {

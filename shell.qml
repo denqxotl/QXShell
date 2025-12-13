@@ -5,6 +5,7 @@ import QtQuick
 import qs.bar
 import qs.popups
 import qs.wallpaper
+import qs.applications.volume
 
 ShellRoot {
     Variants {
@@ -57,4 +58,5 @@ ShellRoot {
             }
         }
     }
+    VolumeOSD {}
 }

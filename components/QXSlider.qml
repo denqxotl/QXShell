@@ -7,6 +7,7 @@ Slider {
     id: qxslider
     property int qxSliderWidth: 250
     property int qxSliderHeight: 20
+    property int defaultValue: 0
 
     anchors {
         verticalCenter: parent.verticalCenter
@@ -33,5 +34,8 @@ Slider {
     handle: Rectangle {
         x: qxslider.leftPadding + qxslider.visualPosition * (qxslider.width - qxslider.leftPadding - qxslider.rightPadding) - width / 2
         y: parent.height / 2 - height / 2
+    }
+    Component.onCompleted: {
+        qxslider.value = qxslider.defaultValue;
     }
 }

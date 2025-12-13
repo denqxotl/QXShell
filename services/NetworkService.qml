@@ -16,10 +16,8 @@ Singleton {
   Process { id: networkProcess }
 
   function getAvailableNetworks() {
-    console.log("Fetching available networks...");
     const command = prepareCommand(scanCommand);
     const t = networkService.networkProcess.exec(command);
-    console.log(t);
   }
 
 
