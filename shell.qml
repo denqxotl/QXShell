@@ -6,6 +6,7 @@ import qs.bar
 import qs.popups
 import qs.wallpaper
 import qs.applications.volume
+import qs.applications.notifications
 
 ShellRoot {
     Variants {
@@ -46,12 +47,8 @@ ShellRoot {
                 id: networkPopup
                 anchor.window: bar
             }
-
-            WifiInfo {
-                id: wifiInfoPopup
-                anchor.window: bar
-            }
         }
     }
     VolumeOSD {}
+    // NotificationsOSD {}
 }

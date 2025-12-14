@@ -35,6 +35,20 @@ Scope {
         onTriggered: root.shouldShowOsd = false
     }
 
+    function getVolumeIcon() {
+        if (sink?.audio.muted || sink?.audio.volume == 0) {
+            return "volume_muted";
+        }
+        return "volume_max";
+    }
+
+    function getFilledSliderWidth(parent) {
+        if (sink?.audio.muted) {
+            return 0;
+        }
+        return parent.width * (sink?.audio.volume ?? 0);
+    }
+
     LazyLoader {
         active: root.shouldShowOsd
 
@@ -52,7 +66,7 @@ Scope {
             mask: Region {}
 
             Rectangle {
-                opacity: 0.8
+                opacity: 0.9
                 anchors.rightMargin: 12
                 anchors.topMargin: 12
                 anchors.fill: parent
@@ -67,7 +81,7 @@ Scope {
                     }
                     QXIcon {
                         size: 25
-                        icon: sink?.audio.muted || sink?.audio.volume == 0 ? "volume_muted" : "volume_max"
+                        icon: getVolumeIcon()
                     }
 
                     Rectangle {
@@ -78,6 +92,7 @@ Scope {
                         radius: 20
 
                         Rectangle {
+                            id: filledSlider
                             color: Theme.purple
                             anchors {
                                 left: parent.left
@@ -85,7 +100,7 @@ Scope {
                                 bottom: parent.bottom
                             }
 
-                            implicitWidth: parent.width * (sink?.audio.volume ?? 0)
+                            implicitWidth: getFilledSliderWidth(parent)
                             radius: parent.radius
                         }
                     }

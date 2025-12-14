@@ -10,19 +10,11 @@ Item {
     implicitWidth: hoverBackground.implicitWidth
 
     property var vscreen
-    property int imageSize: 28
+    property int imageSize: 25
     property string archLogo: "arch_white"
 
     anchors {
         verticalCenter: parent.verticalCenter
-    }
-
-    function getLogo() {
-        if (hoverBackground.isHovered) {
-            return archHoverLogoPath;
-        } else {
-            return archLogoPath;
-        }
     }
 
     function togglePowerMenu() {
