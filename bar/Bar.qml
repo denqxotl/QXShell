@@ -4,7 +4,6 @@ import qs.bar.left
 import qs.bar.right
 import qs.popups
 import qs.theme
-import qs.services
 
 PanelWindow {
     id: barItem
