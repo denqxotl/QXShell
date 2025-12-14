@@ -1,5 +1,6 @@
 import QtQuick
 import qs.theme
+import qs.applications.hyprland
 
 Item {
     id: leftContainerRoot
@@ -28,7 +29,7 @@ Item {
             Arch {
                 vscreen: vscreen
             }
-            Workspaces {
+            WorkspacesBarItems {
                 vscreen: vscreen
             }
         }

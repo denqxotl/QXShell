@@ -4,7 +4,7 @@ import qs.components
 import qs.theme
 
 Item {
-    id: clockRoot
+    id: hyprlandWorkspaces
     implicitHeight: workspacesRow.implicitHeight
     implicitWidth: workspacesRow.implicitWidth
     property var vscreen

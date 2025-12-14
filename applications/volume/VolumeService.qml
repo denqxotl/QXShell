@@ -15,6 +15,10 @@ Singleton {
         objects: [sink, source]
     }
 
+    function isReady() {
+        return Pipewire.ready && !!sink?.audio;
+    }
+
     function getVolumeIcon() {
         const volume = sink?.audio.volume;
         const muted = sink?.audio.muted;
