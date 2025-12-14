@@ -1,20 +1,15 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
-import Quickshell.Services.Pipewire
 import qs.theme
 import qs.components
+import qs.applications.volume.services
 
 Scope {
     id: root
-    property var sink: Pipewire.defaultAudioSink
-
-    PwObjectTracker {
-        objects: [sink]
-    }
 
     Connections {
-        target: sink?.audio
+        target: VolumeService.sink?.audio
 
         function onVolumeChanged() {
             root.shouldShowOsd = true;
@@ -35,18 +30,11 @@ Scope {
         onTriggered: root.shouldShowOsd = false
     }
 
-    function getVolumeIcon() {
-        if (sink?.audio.muted || sink?.audio.volume == 0) {
-            return "volume_muted";
-        }
-        return "volume_max";
-    }
-
     function getFilledSliderWidth(parent) {
-        if (sink?.audio.muted) {
+        if (VolumeService.isSinkMuted()) {
             return 0;
         }
-        return parent.width * (sink?.audio.volume ?? 0);
+        return parent.width * (VolumeService.getSinkVolume() ?? 0);
     }
 
     LazyLoader {
@@ -81,7 +69,7 @@ Scope {
                     }
                     QXIcon {
                         size: 25
-                        icon: getVolumeIcon()
+                        icon: VolumeService.getVolumeIcon()
                     }
 
                     Rectangle {

@@ -1,39 +1,19 @@
+// VolumeBarItem.qml
 import QtQuick
 import Quickshell.Services.Pipewire
 import qs
 import qs.components
 import qs.theme
+import qs.applications.volume.services
 
 Item {
     id: volumeRoot
     visible: Pipewire.ready
     implicitHeight: hoverBackground.implicitHeight
     implicitWidth: hoverBackground.implicitWidth
-
-    property var sink: Pipewire.defaultAudioSink
-
     anchors {
         verticalCenter: parent.verticalCenter
     }
-
-    PwObjectTracker {
-        objects: [sink]
-    }
-
-    function getVolumeIcon() {
-        if (sink?.audio.muted || sink?.audio.volume === 0) {
-            return "volume_muted";
-        }
-        return "volume_max";
-    }
-
-    function getVolumeText() {
-        if (sink?.audio.muted || sink?.audio.volume === 0) {
-            return null;
-        }
-        return Math.round(sink?.audio.volume * 100) + "%";
-    }
-
     QXButton {
         id: hoverBackground
         onClick: () => {}
@@ -42,10 +22,10 @@ Item {
                 anchors.centerIn: parent
                 spacing: 4
                 QXIcon {
-                    icon: getVolumeIcon()
+                    icon: VolumeService.getVolumeIcon()
                 }
                 QXText {
-                    text: getVolumeText()
+                    text: VolumeService.getVolumePercentage()
                     font.pixelSize: 10
                 }
             }
