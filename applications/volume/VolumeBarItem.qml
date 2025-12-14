@@ -4,7 +4,7 @@ import Quickshell.Services.Pipewire
 import qs
 import qs.components
 import qs.theme
-import qs.applications.volume.services
+import qs.applications.volume
 
 Item {
     id: volumeRoot

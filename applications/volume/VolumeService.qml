@@ -39,6 +39,6 @@ Singleton {
     }
 
     function getSinkVolume() {
-        return sink?.audio.volume;
+        return sink?.audio.volume || 0;
     }
 }

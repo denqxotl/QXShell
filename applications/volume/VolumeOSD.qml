@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import Quickshell
 import qs.theme
 import qs.components
-import qs.applications.volume.services
+import qs.applications.volume
 
 Scope {
     id: root
@@ -34,7 +34,7 @@ Scope {
         if (VolumeService.isSinkMuted()) {
             return 0;
         }
-        return parent.width * (VolumeService.getSinkVolume() ?? 0);
+        return parent.width * VolumeService.getSinkVolume();
     }
 
     LazyLoader {
