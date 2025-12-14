@@ -11,12 +11,13 @@ Item {
     visible: Pipewire.ready
     implicitHeight: hoverBackground.implicitHeight
     implicitWidth: hoverBackground.implicitWidth
+
     anchors {
         verticalCenter: parent.verticalCenter
     }
+
     QXButton {
         id: hoverBackground
-        onClick: () => {}
         content: Component {
             Row {
                 anchors.centerIn: parent

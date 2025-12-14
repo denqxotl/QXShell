@@ -7,6 +7,7 @@ import qs.popups
 import qs.wallpaper
 import qs.applications.volume
 import qs.applications.notifications
+import qs.applications.app_launcher
 
 ShellRoot {
     Variants {
@@ -50,5 +51,7 @@ ShellRoot {
         }
     }
     VolumeOSD {}
+    // Launcher {}
     // NotificationsOSD {}
+    //
 }

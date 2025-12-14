@@ -21,11 +21,11 @@ PanelWindow {
     Rectangle {
         anchors.fill: parent
         implicitHeight: 50
-        radius: 12
+        bottomLeftRadius: 12
+        bottomRightRadius: 12
         color: Theme.background
         opacity: 0.9
         anchors {
-            margins: 8
             bottomMargin: 0
         }
         Left {
