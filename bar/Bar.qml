@@ -25,6 +25,8 @@ PanelWindow {
         color: Theme.background
         opacity: 0.9
         anchors {
+            leftMargin: 8
+            rightMargin: 8
             bottomMargin: 0
         }
         Left {
