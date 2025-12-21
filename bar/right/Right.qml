@@ -1,6 +1,7 @@
 import QtQuick
 import qs.theme
 import qs.applications.volume
+import qs.applications.SystemMonitor
 
 Item {
     id: rightContainerRoot
@@ -22,7 +23,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             Tray {}
-            SystemMonitor {}
+            SystemMonitorBarItem {}
             VolumeBarItem {}
             Network {}
             KeyboardLayout {}

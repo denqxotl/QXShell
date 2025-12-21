@@ -8,6 +8,7 @@ import qs.wallpaper
 import qs.applications.volume
 import qs.applications.notifications
 import qs.applications.app_launcher
+import qs.applications.SystemMonitor
 
 ShellRoot {
     Variants {
@@ -51,6 +52,7 @@ ShellRoot {
         }
     }
     VolumeOSD {}
+    // SystemMonitorWindow {}
     // Launcher {}
     // NotificationsOSD {}
     //

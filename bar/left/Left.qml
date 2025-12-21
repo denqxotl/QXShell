@@ -26,9 +26,7 @@ Item {
             spacing: 5
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
-            Arch {
-                vscreen: vscreen
-            }
+            Arch {}
             WorkspacesBarItems {
                 vscreen: vscreen
             }
