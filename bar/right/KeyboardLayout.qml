@@ -14,45 +14,12 @@ Item {
 
     Process {
         id: layoutProcess
-        command: ['sh', '-c', '/home/denqxotl/.config/quickshell/bar/right/keyboardlayout/layoutlistener.sh']
+        command: ['sh', '-c', 'hyprlayout']
         running: true
         stdout: SplitParser {
             id: layoutParser
             onRead: data => {
-                keyboardLayout.currentLayout = parseLayout(data.toString().trim());
-            }
-        }
-    }
-
-    function parseLayout(layout) {
-        switch (layout) {
-        case "English (US)":
-            return "EN";
-        case "Ukrainian":
-            return "UA";
-        default:
-            return "...";
-        }
-    }
-
-    Process {
-        id: initialLayoutProcess
-        command: ['hyprctl', 'devices', '-j']
-        running: true
-        stdout: StdioCollector {
-            onStreamFinished: {
-                const raw = this.text.toString().trim();
-                try {
-                    const devices = JSON.parse(raw);
-                    const keyboard = devices.keyboards.find(k => k.active_keymap);
-                    if (keyboard) {
-                        keyboardLayout.currentLayout = parseLayout(keyboard.active_keymap);
-                    }
-                } catch (e) {
-                    console.error("JSON Parsing failed:", e);
-                    keyboardLayout.currentLayout = "...";
-                }
-                initialLayoutProcess.running = false;
+                keyboardLayout.currentLayout = data.toString().trim();
             }
         }
     }

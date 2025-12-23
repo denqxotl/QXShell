@@ -20,5 +20,5 @@ Singleton {
     property int radius: 12
 
     property string fontFamily: "Noto Sans"
-    property string wallpaperPath: "file:///home/denqxotl/Pictures/tg9.jpeg"
+    property string wallpaperPath: "file:///home/denqxotl/Pictures/12.png"
 }
