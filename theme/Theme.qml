@@ -20,5 +20,9 @@ Singleton {
     property int radius: 12
 
     property string fontFamily: "Noto Sans"
-    property string wallpaperPath: "file:///home/denqxotl/Pictures/12.png"
+    property string wallpaperPath: "file:///home/denqxotl/Pictures/df.jpg"
+
+    function withAlpha(c, a) {
+        return Qt.rgba(c.r, c.g, c.b, a);
+    }
 }

@@ -22,8 +22,8 @@ PanelWindow {
         implicitHeight: 50
         bottomLeftRadius: 12
         bottomRightRadius: 12
-        color: Theme.background
-        opacity: 0.9
+        color: Theme.withAlpha(Theme.background, 0.6)
+
         anchors {
             leftMargin: 0
             rightMargin: 0
