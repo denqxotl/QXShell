@@ -13,17 +13,12 @@ Item {
 
     property string currentLayout: "..."
 
-    Process {
-        id: layoutProcess
-        command: ['sh', '-c', 'hyprlayout']
-        running: true
-        stdout: SplitParser {
-            id: layoutParser
-            onRead: data => {
-                root.currentLayout = data.toString().trim();
-                root.shouldShowOsd = true;
-                hideTimer.restart();
-            }
+    Connections {
+        target: KeyboardLayoutService
+        function onLayoutChanged(layout) {
+            root.currentLayout = layout;
+            root.shouldShowOsd = true;
+            hideTimer.restart();
         }
     }
 

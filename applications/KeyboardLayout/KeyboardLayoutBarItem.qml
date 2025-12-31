@@ -10,17 +10,13 @@ Item {
     implicitWidth: hoverBackground.implicitWidth
 
     anchors.verticalCenter: parent.verticalCenter
+
     property string currentLayout: "..."
 
-    Process {
-        id: layoutProcess
-        command: ['sh', '-c', 'hyprlayout']
-        running: true
-        stdout: SplitParser {
-            id: layoutParser
-            onRead: data => {
-                keyboardLayout.currentLayout = data.toString().trim();
-            }
+    Connections {
+        target: KeyboardLayoutService
+        function onLayoutChanged(layout) {
+            keyboardLayout.currentLayout = layout;
         }
     }
 

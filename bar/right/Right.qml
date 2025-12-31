@@ -2,6 +2,7 @@ import QtQuick
 import qs.theme
 import qs.applications.volume
 import qs.applications.SystemMonitor
+import qs.applications.KeyboardLayout
 
 Item {
     id: rightContainerRoot
@@ -26,7 +27,7 @@ Item {
             SystemMonitorBarItem {}
             VolumeBarItem {}
             Network {}
-            KeyboardLayout {}
+            KeyboardLayoutBarItem {}
             Clock {}
         }
     }

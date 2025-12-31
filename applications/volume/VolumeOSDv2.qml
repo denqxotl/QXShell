@@ -28,7 +28,7 @@ Item {
 
     Timer {
         id: hideTimer
-        interval: 1000
+        interval: 1200
         onTriggered: root.shouldShowOsd = false
     }
 
