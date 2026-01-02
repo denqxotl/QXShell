@@ -1,4 +1,3 @@
-// Backdrop.qml
 import Quickshell
 import QtQuick
 import Quickshell.Wayland

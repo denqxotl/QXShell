@@ -1,8 +1,8 @@
-import Quickshell
 import Quickshell.Io
 import QtQuick
 import qs
 import qs.components
+import qs.popups
 
 Popup {
     id: powerMenuPopup

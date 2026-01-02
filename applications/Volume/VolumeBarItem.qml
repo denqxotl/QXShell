@@ -3,7 +3,7 @@ import QtQuick
 import qs
 import qs.components
 import qs.theme
-import qs.applications.volume
+import qs.applications.Volume
 
 Item {
     id: volumeRoot

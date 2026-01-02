@@ -1,6 +1,6 @@
 import QtQuick
 import qs.theme
-import qs.applications.hyprland
+import qs.applications.Hyprland
 
 Item {
     id: leftContainerRoot

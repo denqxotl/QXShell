@@ -1,6 +1,6 @@
 import QtQuick
 import qs.theme
-import qs.applications.volume
+import qs.applications.Volume
 import qs.applications.SystemMonitor
 import qs.applications.KeyboardLayout
 

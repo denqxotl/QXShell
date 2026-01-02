@@ -7,11 +7,12 @@ import QtQuick.Layouts
 import qs.bar
 import qs.popups
 import qs.wallpaper
-import qs.applications.volume
+import qs.applications.Volume
 import qs.applications.KeyboardLayout
 import qs.applications.notifications
-import qs.applications.app_launcher
+import qs.applications.AppLauncher
 import qs.applications.SystemMonitor
+import qs.applications.PowerMenu
 
 ShellRoot {
     Variants {
@@ -21,9 +22,12 @@ ShellRoot {
         Item {
             property var modelData
 
+            // Launcher {}
+
             Wallpaper {
                 vscreen: modelData
             }
+
             Backdrop {
                 vscreen: modelData
             }
@@ -52,6 +56,7 @@ ShellRoot {
                 id: networkPopup
                 anchor.window: bar
             }
+
             PanelWindow {
                 exclusiveZone: 0
                 visible: Hyprland.focusedMonitor.name === modelData.name
@@ -65,7 +70,6 @@ ShellRoot {
                 color: "transparent"
                 ColumnLayout {
                     id: columnLayout
-                    spacing: 10
                     VolumeOSDv2 {}
                     KeyboardLayoutOSD {}
                 }

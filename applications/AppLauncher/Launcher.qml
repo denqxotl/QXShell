@@ -15,7 +15,6 @@ PanelWindow {
             placeholderText: "Run…"
             focus: true
             onTextChanged: {}
-
             Keys.forwardTo: input
         }
     }
