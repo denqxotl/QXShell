@@ -5,7 +5,7 @@ import qs
 import qs.theme
 import qs.components
 
-Popup {
+QXPopup {
     id: networkManagerPopup
     property var networks: []
     property var connectedNetwork: null

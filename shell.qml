@@ -3,16 +3,14 @@
 import Quickshell
 import Quickshell.Hyprland
 import QtQuick
-import QtQuick.Layouts
 import qs.bar
 import qs.popups
 import qs.wallpaper
 import qs.applications.Volume
 import qs.applications.KeyboardLayout
-import qs.applications.notifications
-import qs.applications.AppLauncher
 import qs.applications.SystemMonitor
 import qs.applications.PowerMenu
+import qs.Sidebar
 
 ShellRoot {
     Variants {
@@ -21,8 +19,6 @@ ShellRoot {
 
         Item {
             property var modelData
-
-            // Launcher {}
 
             Wallpaper {
                 vscreen: modelData
@@ -57,22 +53,8 @@ ShellRoot {
                 anchor.window: bar
             }
 
-            PanelWindow {
-                exclusiveZone: 0
-                visible: Hyprland.focusedMonitor.name === modelData.name
+            SidebarContainer {
                 screen: modelData
-                anchors {
-                    top: true
-                    right: true
-                }
-                implicitWidth: columnLayout.width
-                implicitHeight: columnLayout.height
-                color: "transparent"
-                ColumnLayout {
-                    id: columnLayout
-                    VolumeOSDv2 {}
-                    KeyboardLayoutOSD {}
-                }
             }
         }
     }

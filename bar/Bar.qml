@@ -16,7 +16,14 @@ PanelWindow {
         right: true
         top: true
     }
-
+    focusable: true
+    Shortcut {
+        sequence: "Escape"
+        context: Qt.WindowShortcut
+        onActivated: {
+            PopupManager.closeAll();
+        }
+    }
     Rectangle {
         anchors.fill: parent
         implicitHeight: 50

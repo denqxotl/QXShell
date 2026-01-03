@@ -21,7 +21,7 @@ Singleton {
     property int radius: 12
 
     property string fontFamily: "Noto Sans"
-    property string wallpaperPath: "file:///home/denqxotl/Pictures/df.jpg"
+    property string wallpaperPath: "file:///home/denqxotl/Pictures/wp5.jpeg"
 
     function withAlpha(c, a) {
         return Qt.rgba(c.r, c.g, c.b, a);

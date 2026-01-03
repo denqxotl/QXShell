@@ -20,7 +20,7 @@ QXOsd {
     content: Component {
         RowLayout {
             QXText {
-                anchors.centerIn: parent
+                Layout.alignment: Qt.AlignCenter
                 text: root.currentLayout
                 font {
                     bold: true

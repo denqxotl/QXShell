@@ -4,7 +4,7 @@ import qs
 import qs.components
 import qs.popups
 
-Popup {
+QXPopup {
     id: powerMenuPopup
     property int iconSize: 30
 

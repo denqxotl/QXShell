@@ -3,7 +3,7 @@ import Quickshell.Services.SystemTray
 import QtQuick
 import qs.components
 
-Popup {
+QXPopup {
     id: trayPopup
     content: Component {
         Row {

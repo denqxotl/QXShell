@@ -5,7 +5,7 @@ import QtQuick
 import qs.components
 import qs.theme
 
-Popup {
+QXPopup {
     id: layoutPopup
     property var layouts: []
 
