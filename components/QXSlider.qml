@@ -35,6 +35,7 @@ Slider {
         x: qxslider.leftPadding + qxslider.visualPosition * (qxslider.width - qxslider.leftPadding - qxslider.rightPadding) - width / 2
         y: parent.height / 2 - height / 2
     }
+
     Component.onCompleted: {
         qxslider.value = qxslider.defaultValue;
     }

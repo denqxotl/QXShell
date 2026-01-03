@@ -1,7 +1,6 @@
 //@ pragma UseQApplication
 
 import Quickshell
-import Quickshell.Hyprland
 import QtQuick
 import qs.bar
 import qs.popups

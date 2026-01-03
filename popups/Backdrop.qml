@@ -7,6 +7,7 @@ PanelWindow {
     id: background
     WlrLayershell.layer: WlrLayer.Top
     property var vscreen
+
     visible: false
     screen: vscreen
     anchors {
