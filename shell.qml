@@ -20,7 +20,7 @@ ShellRoot {
             property var modelData
 
             Wallpaper {
-                vscreen: modelData
+                screen: modelData
             }
 
             Backdrop {

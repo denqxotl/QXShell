@@ -13,7 +13,7 @@ Item {
 
     function toggle() {
         const point = trayRoot.mapToItem(null, 0, 0);
-        trayPopup.toggle('right', point.x + trayRoot.width | 0, point.y);
+        trayPopup.toggle('left', point.x + trayRoot.width | 0, point.y);
     }
 
     QXButton {

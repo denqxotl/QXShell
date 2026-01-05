@@ -7,9 +7,11 @@ Singleton {
     id: keyboardLayoutService
     signal layoutChanged(string layout)
 
+    readonly property var layoutCommandBin: ['sh', '-c', 'hyprlayout']
+
     Process {
         id: layoutProcess
-        command: ['sh', '-c', 'hyprlayout']
+        command: KeyboardLayoutService.layoutCommandBin
         running: true
         stdout: SplitParser {
             id: layoutParser

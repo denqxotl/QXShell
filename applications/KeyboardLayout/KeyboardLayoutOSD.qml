@@ -6,7 +6,7 @@ import qs.applications.Volume
 
 QXOsd {
     id: root
-    property string currentLayout: "..."
+    property string currentLayout: ".."
 
     Connections {
         target: KeyboardLayoutService
@@ -19,13 +19,22 @@ QXOsd {
 
     content: Component {
         RowLayout {
+            spacing: 8
+            Item {
+                Layout.fillWidth: true
+            }
+            QXIcon {
+                icon: "layout"
+            }
             QXText {
-                Layout.alignment: Qt.AlignCenter
                 text: root.currentLayout
                 font {
                     bold: true
                     pixelSize: 18
                 }
+            }
+            Item {
+                Layout.fillWidth: true
             }
         }
     }

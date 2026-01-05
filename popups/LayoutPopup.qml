@@ -1,12 +1,11 @@
-import Quickshell
-import Quickshell.Io
-import Quickshell.Hyprland
 import QtQuick
+import Quickshell.Io
 import qs.components
 import qs.theme
 
 QXPopup {
     id: layoutPopup
+    implicitWidth: 400
     property var layouts: []
 
     Process {
@@ -33,6 +32,7 @@ QXPopup {
             Repeater {
                 model: layoutPopup.layouts
                 delegate: QXButton {
+                    implicitWidth: 350
                     onClick: () => {
                         changeLayoutProcess.exec(["sh", "-c", "hyprctl switchxkblayout keychron--keychron-link--keyboard " + index]);
                         PopupManager.close(layoutPopup);

@@ -53,7 +53,7 @@ Item {
 
     function togglePopup() {
         var point = networkRoot.mapToItem(null, 0, 0);
-        networkPopup.toggle("right", point.x + networkRoot.width | 0, point.y);
+        networkPopup.toggle("left", point.x + networkRoot.width | 0, point.y);
     }
 
     QXButton {

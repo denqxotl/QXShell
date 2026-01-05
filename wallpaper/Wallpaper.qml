@@ -1,4 +1,3 @@
-// Wallpaper.qml
 import Quickshell
 import QtQuick
 import Quickshell.Wayland
@@ -8,11 +7,9 @@ PanelWindow {
     id: wallpaper
     WlrLayershell.layer: WlrLayer.Background
     WlrLayershell.exclusiveZone: 1
-    property var vscreen
 
-    screen: vscreen
-    implicitHeight: vscreen.height
-    implicitWidth: vscreen.width
+    implicitHeight: screen.height
+    implicitWidth: screen.width
 
     color: Theme.transparent
 
