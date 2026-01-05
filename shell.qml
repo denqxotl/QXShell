@@ -51,10 +51,7 @@ ShellRoot {
                 id: networkPopup
                 anchor.window: bar
             }
-
-            SidebarContainer {
-                screen: modelData
-            }
         }
     }
+    SidebarContainer {}
 }
